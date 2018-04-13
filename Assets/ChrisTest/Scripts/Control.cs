@@ -19,7 +19,7 @@ public class Control : MonoBehaviour {
     void FixedUpdate()
     {
         //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis ("Horizontal");
+        float moveHorizontal = Input.GetAxis ("Horizontal1");
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = 0;
