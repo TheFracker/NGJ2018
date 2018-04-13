@@ -1,16 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿public class Locator
+{
+    private static IAudio _audio;
+    
+    public static void Initialize()
+    {
+        _audio = new Audio();
+    }
 
-public class Locator : MonoBehaviour {
+    public static IAudio GetAudio()
+    {
+        return _audio;
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public static void Provide(IAudio audio)
+    {
+        _audio = audio;
+    }
 }
