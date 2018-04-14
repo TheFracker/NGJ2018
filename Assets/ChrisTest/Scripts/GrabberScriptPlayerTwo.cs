@@ -10,7 +10,7 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
 
     RaycastHit2D hit2;
     public Transform holdPoint;
-    public Transform otherConsolePoint;
+    public Transform otherConsolePoint1;
     public float distance = 2f;
     public float throwForce = 2f;
     public bool playerOnConsol;
@@ -52,7 +52,7 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
                 if (hit2.collider.gameObject.GetComponent<Rigidbody2D>() != null && playerOnConsol == true)
                 {
                     
-                    hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint.position);
+                    hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint1.position);
                     print("is trigger");
                 }
 
