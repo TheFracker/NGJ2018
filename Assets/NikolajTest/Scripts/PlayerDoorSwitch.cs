@@ -10,17 +10,19 @@ public class PlayerDoorSwitch : MonoBehaviour
     public float HoldTime = 2f;
     public bool Lower = false;
     public string Player;
+    private string _tag;
 
     // Use this for initialization
     void Start()
     {
         Player = transform.name.Remove(0, transform.name.Length - 1);
+        _tag = "doorButton" + (Lower ? "Lower" : "Upper");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonUp($"Player{Player}Inter2"))
+        if (Input.GetButtonUp($"Player{Player}Inter1"))
         {
             _buttonDown = false;
         }
@@ -28,7 +30,7 @@ public class PlayerDoorSwitch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
+        if (other.gameObject.tag == _tag)
         {
             _onCollider = true;
         }
@@ -36,7 +38,7 @@ public class PlayerDoorSwitch : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper") && Input.GetButtonDown($"Player{Player}Inter2"))
+        if (other.gameObject.tag == _tag && Input.GetButtonDown($"Player{Player}Inter1"))
         {
             var s = other.gameObject.transform.GetComponentInChildren<DoorSwitch>();
             if (s == null) return;
@@ -47,7 +49,7 @@ public class PlayerDoorSwitch : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
+        if (other.gameObject.tag == _tag)
         {
             _onCollider = false;
         }

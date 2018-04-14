@@ -21,7 +21,7 @@ public class PlayerGrabber : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.anyKeyDown)
         {
@@ -31,18 +31,10 @@ public class PlayerGrabber : MonoBehaviour
         {
             if (!Grabbed)
             {
-                Physics2D.queriesStartInColliders = false;
-                _hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, Distance, Mask.value);
-                if (_hit == false) {
-                    _hit = Physics2D.Raycast(transform.position, Vector2.left * transform.localScale.x, Distance, Mask.value);
-                }
-                if(_hit == false)
-                {
-                    _hit = Physics2D.Raycast(Vector2.right * transform.localScale.x, transform.position, Distance, Mask.value);
-                }
+                _hit = Physics2D.Raycast(new Vector2(transform.position.x + Distance, transform.position.y), transform.position, Distance, Mask.value);
                 if (_hit == false)
                 {
-                    _hit = Physics2D.Raycast(Vector2.left * transform.localScale.x, transform.position,  Distance, Mask.value);
+                    _hit = Physics2D.Raycast(new Vector2(transform.position.x - Distance, transform.position.y), transform.position, Distance, Mask.value);
                 }
 
 
@@ -82,14 +74,13 @@ public class PlayerGrabber : MonoBehaviour
         }
     }
 
-   
-
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject == Consol)
         {
             PlayerOnConsol = true;
         }
+       
 
     }
 

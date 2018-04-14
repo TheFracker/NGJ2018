@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class PlayerDoorOpen : MonoBehaviour
 {
@@ -9,12 +10,17 @@ public class PlayerDoorOpen : MonoBehaviour
     private bool _buttonDown;
     public float HoldTime = 2f;
     public string Player;
-    public bool Lower = false;
+
+    public SpriteRenderer oButton;
+    public Image progressBar;
 
     // Use this for initialization
     void Start()
     {
         _onCollider = false;
+
+        oButton.enabled = false;
+        progressBar.enabled = false;
 
         Player = transform.name.Remove(0, transform.name.Length - 1);
     }
@@ -29,14 +35,18 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
+        if (other.gameObject.tag == "door")
         {
             _onCollider = true;
+            
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        var doors = other.gameObject.transform.GetComponent<DoorCollider>();
+        if (doors.Broken == true) oButton.enabled = true;
+
         if (other.gameObject.tag == "door" && Input.GetButtonDown($"Player{Player}Inter1"))
         {
             var s = other.gameObject.transform.GetComponentInParent<Door>();
@@ -48,9 +58,11 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "door")
         {
             _onCollider = false;
+            oButton.enabled = false;
+            progressBar.enabled = false;
         }
     }
 
@@ -59,6 +71,7 @@ public class PlayerDoorOpen : MonoBehaviour
         var startTime = Time.time;
         while (_buttonDown && Time.time - startTime < holdTime && _onCollider)
         {
+            progressBar.enabled = true;
             yield return null;
         }
         yield return null;
