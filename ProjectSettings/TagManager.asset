@@ -12,6 +12,7 @@ TagManager:
   - ThingsThatBreakStuff
   - door
   - doorButton
+  - hole
   layers:
   - Default
   - TransparentFX
