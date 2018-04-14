@@ -6,7 +6,9 @@ public class PlayerTwoMovement : MonoBehaviour {
 
     public float speed;             //Floating point variable to store the player's movement speed.
 
-    private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
+    private Rigidbody2D rb2d; //Store a reference to the Rigidbody2D component required to use 2D Physics.
+
+    bool movingRight;
 
     // Use this for initialization
     void Start()
@@ -29,5 +31,17 @@ public class PlayerTwoMovement : MonoBehaviour {
 
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
         rb2d.AddForce (movement * speed);
+
+        if (moveHorizontal < 0 && !movingRight)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            movingRight = true;
+        }
+
+        else if (moveHorizontal > 0 && movingRight)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            movingRight = false;
+        }
     }
 }
