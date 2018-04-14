@@ -4,45 +4,36 @@ using UnityEngine;
 
 public class DoorSwitch : MonoBehaviour, IBreakable
 {
-    public List<DoorCollider> doors = new List<DoorCollider>();
-    public bool doorsBroken = false;
-
-    
+    public List<DoorCollider> Doors = new List<DoorCollider>();
+    public bool DoorsBroken;
 
     // Use this for initialization
     void Start()
     {
-        doorsBroken = false;
+        DoorsBroken = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Break();
-        }
-
+        if (Input.GetKeyDown(KeyCode.E)) Break();
     }
 
     public void Break()
     {
-        print("doors broken");
-        foreach (var door in doors)
+        foreach (var door in Doors)
         {
-            door.broken = true;
+            door.Broken = true;
         }
-        doorsBroken = true;
+        DoorsBroken = true;
     }
 
     public void DoorRepair()
     {
-        print("doors repaired");
-        foreach (var door in doors)
+        foreach (var door in Doors)
         {
-            door.broken = false;
+            door.Broken = false;
         }
-        doorsBroken = false;
-
+        DoorsBroken = false;
     }
 
 }

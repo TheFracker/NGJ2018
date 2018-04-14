@@ -6,9 +6,8 @@ using MEC;
 public class DoorCollider : MonoBehaviour
 {
     private bool _broken;
-    public bool doorCollider;
-    public bool open;
-    public bool broken
+    public bool Open;
+    public bool Broken
     {
         get { return _broken; }
         set
@@ -28,32 +27,17 @@ public class DoorCollider : MonoBehaviour
     void Start()
     {
         _door = GetComponentInParent<Door>();
-        doorCollider = false;
-        broken = false;
+        Broken = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            doorCollider = true;
-            print("triggered");
-        }
-    }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!broken) return;
-        if (other.gameObject.tag == "Player")
-        {
-            doorCollider = false;
-            print("Exited");
-            StartCoroutine(CloseDoor(1f));
-        }
+        if (!Broken || other.gameObject.tag != "Player") return;
+        StartCoroutine(CloseDoor(1f));
     }
 
     IEnumerator CloseDoor(float openTime)
     {
-        var startTime = Time.time;
         yield return new WaitForSeconds(openTime);
         _door.DoorClosed();
     }
