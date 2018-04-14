@@ -24,15 +24,16 @@ public class Audio : IAudio
             _audioGameObject = new GameObject("Audio");
 
 
-        for (var i = 0; i < _sources.Count; i++)
+        for (var i = 0; i < 8; i++)
         {
-            _sources[i] = new source
+            _sources.Add(new source
             {
                 number = i,
-                audioSource = null,
+                audioSource = _audioGameObject.AddComponent<AudioSource>(),
                 inUse = false
-            };
+            });
         }
+        Debug.Log(_sources.Count());
     }
 
     public void Play(int track)
@@ -79,6 +80,7 @@ public class Audio : IAudio
             if (!_sources[i].inUse)
             {
                 _sources[i].audioSource.clip = clip;
+                _sources[i].inUse = true;
                 return i;
             }
         }
