@@ -20,6 +20,5 @@ public class LightSwitch : MonoBehaviour, IBreakable
         {
             light.enabled = false;
         }
-        Locator.GetGauge().Add();
     }
 }
