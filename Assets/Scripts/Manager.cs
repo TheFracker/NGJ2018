@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Manager : MonoBehaviour {
-
-    private static int numberOfBrokenStuff;
 
     [SerializeField]
     private List<GameObject> thingsThatBreakStuff;
@@ -51,7 +50,7 @@ public class Manager : MonoBehaviour {
             int whatToBreak = Random.Range(0, thingsThatBreakStuff.Count);
             thingsThatBreakStuff[whatToBreak].GetComponent<IBreakable>().Break();
             timeStamp = Time.time;
-            numberOfBrokenStuff++;
+            Locator.GetGauge().Add();
 
             levelOfSpeed += relativeTimeReductionPerLevel;
             timerInterval[0] = startIntervalMin-Mathf.Sqrt(levelOfSpeed);
