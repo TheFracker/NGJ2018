@@ -10,6 +10,7 @@ TagManager:
   - doorButtonUpper
   - doorButtonLower
   - ThingsThatBreakStuff
+  - Fish
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - 
   - StarFishKit
-  - 
+  - Fish
   - 
   - 
   - 
