@@ -9,7 +9,6 @@ public class PlayerDoorOpen : MonoBehaviour
     private bool _buttonDown;
     public float HoldTime = 2f;
     public string Player;
-    public bool Lower = false;
 
     // Use this for initialization
     void Start()
@@ -29,7 +28,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
+        if (other.gameObject.tag == "door")
         {
             _onCollider = true;
         }
@@ -48,7 +47,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "door")
         {
             _onCollider = false;
         }

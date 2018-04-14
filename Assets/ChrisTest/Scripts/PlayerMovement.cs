@@ -35,7 +35,12 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-        _rb2D.AddForce (movement * Speed);
+        
+
+        if (_rb2D.velocity.x < maxSpeed && _rb2D.velocity.x > -maxSpeed)
+        {
+            _rb2D.AddForce(movement * Speed);
+        }
 
         if ( moveHorizontal <0 && !_movingRight)
         {
