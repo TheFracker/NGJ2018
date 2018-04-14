@@ -320,7 +320,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 436274302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: holdPoint
   m_TagString: Untagged
   m_Icon: {fileID: -6431860639581277017, guid: 0000000000000000d000000000000000, type: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 729351947}
   - component: {fileID: 729351952}
   - component: {fileID: 729351951}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerSag2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4.8}
+    oldSize: {x: 4.5, y: 5.4}
     newSize: {x: 3.84, y: 3.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 1047839846}
   - component: {fileID: 1047839849}
   - component: {fileID: 1047839848}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerSag1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4.8}
+    oldSize: {x: 4.5, y: 5.4}
     newSize: {x: 3.84, y: 3.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 1616826293}
   - component: {fileID: 1616826295}
   - component: {fileID: 1616826296}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RepairKit
   m_TagString: Grabable
   m_Icon: {fileID: 0}
@@ -1308,7 +1308,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2070875418}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Holdpoint2
   m_TagString: Untagged
   m_Icon: {fileID: -3701561207968579530, guid: 0000000000000000d000000000000000, type: 0}
