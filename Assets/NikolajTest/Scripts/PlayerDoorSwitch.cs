@@ -19,7 +19,7 @@ public class PlayerDoorSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonUp($"Player{Player}Inter1"))
+        if (Input.GetButtonUp($"Player{Player}Inter2"))
         {
             _buttonDown = false;
         }
@@ -35,7 +35,7 @@ public class PlayerDoorSwitch : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper") && Input.GetButtonDown($"Player{Player}Inter1"))
+        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper") && Input.GetButtonDown($"Player{Player}Inter2"))
         {
             var s = other.gameObject.transform.GetComponentInChildren<DoorSwitch>();
             if (s == null) return;
