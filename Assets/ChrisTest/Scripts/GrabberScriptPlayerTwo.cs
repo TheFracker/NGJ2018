@@ -46,7 +46,6 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
             }
             else if(hit2.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                hit2.collider.gameObject.SetActive(true);
                 //throw
                 grabbed = false;
                 GetComponent<Animator>().SetBool("carringStarFish", grabbed);
@@ -54,19 +53,20 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
 
                 if (playerOnConsol == true)
                 {
-                    
-                    hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint1.position);
+                    hit2.collider.gameObject.SetActive(true);
+                    hit2.collider.gameObject.transform.position = new Vector2(otherConsolePoint1.position.x, otherConsolePoint1.position.y);
                     print("is trigger");
                 }
 
                 else
 
                 {
-                    hit2.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwForce;
+                    hit2.collider.gameObject.SetActive(true);
+                    hit2.collider.gameObject.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
                 }
 
 
-
+               
                 hit2.collider.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
 
 

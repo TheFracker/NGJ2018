@@ -11,7 +11,6 @@ public class GrabberScriptPlayerOne : MonoBehaviour {
     public Transform holdPoint;
     public Transform otherConsolePoint;
     public float distance = 2f;
-    public float throwForce = 2f;
     public bool playerOnConsol;
     public GameObject consol;
     public GameObject kit;
@@ -33,7 +32,6 @@ public class GrabberScriptPlayerOne : MonoBehaviour {
         {
             if (!grabbed)
             {
-                
                 Physics2D.queriesStartInColliders = false;
                 hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance, mask.value );
 
@@ -48,7 +46,7 @@ public class GrabberScriptPlayerOne : MonoBehaviour {
             }
             else if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                hit.collider.gameObject.SetActive(true);
+               
                 //throw
                 grabbed = false;
                 GetComponent<Animator>().SetBool("carringStarFish", grabbed);
@@ -56,14 +54,16 @@ public class GrabberScriptPlayerOne : MonoBehaviour {
 
                 if (playerOnConsol == true)
                 {
-                    hit.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint.position);
+                    hit.collider.gameObject.SetActive(true);
+                    hit.collider.gameObject.transform.position = new Vector2(otherConsolePoint.position.x, otherConsolePoint.position.y);
                     print("is trigger");
                 }
 
                 else
 
                 {
-                    hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwForce;
+                    hit.collider.gameObject.SetActive(true);
+                    hit.collider.gameObject.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
                 }
 
 
