@@ -5,7 +5,7 @@ using System;
 
 public class PlayerDoorOpen : MonoBehaviour
 {
-    public bool OnCollider;
+    private bool _onCollider;
     private bool _buttonDown;
     public float HoldTime = 2f;
     public string Player;
@@ -14,7 +14,7 @@ public class PlayerDoorOpen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        OnCollider = false;
+        _onCollider = false;
 
         Player = transform.name.Remove(0, transform.name.Length - 1);
     }
@@ -31,18 +31,18 @@ public class PlayerDoorOpen : MonoBehaviour
     {
         if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
         {
-            OnCollider = true;
-            print("triggered");
+            _onCollider = true;
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (Input.GetButtonDown($"Player{Player}Inter1"))
+        if (other.gameObject.tag == "door" && Input.GetButtonDown($"Player{Player}Inter1"))
         {
             var s = other.gameObject.transform.GetComponentInParent<Door>();
+            if (s == null) return;
             _buttonDown = true;
-            StartCoroutine(buttonDownTime(HoldTime, s.DoorOpen));
+            StartCoroutine(ButtonDownTime(HoldTime, s.DoorOpen));
         }
     }
 
@@ -50,20 +50,19 @@ public class PlayerDoorOpen : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            OnCollider = false;
-            print("Exited");
+            _onCollider = false;
         }
     }
 
-    IEnumerator buttonDownTime(float holdTime, Action callback)
+    IEnumerator ButtonDownTime(float holdTime, Action callback)
     {
         var startTime = Time.time;
-        while (_buttonDown && Time.time - startTime < holdTime)
+        while (_buttonDown && Time.time - startTime < holdTime && _onCollider)
         {
             yield return null;
         }
         yield return null;
-        if (_buttonDown && (Time.time - startTime >= holdTime))
+        if (_buttonDown && Time.time - startTime >= holdTime && _onCollider)
             callback();
     }
 }

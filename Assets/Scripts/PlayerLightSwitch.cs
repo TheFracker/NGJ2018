@@ -1,18 +1,21 @@
-﻿using System.Collections;
-using System;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDoorSwitch : MonoBehaviour
+public class PlayerLightSwitch : MonoBehaviour
 {
     private bool _onCollider;
     private bool _buttonDown;
     public float HoldTime = 2f;
     public bool Lower = false;
     public string Player;
+    private string _tag;
 
     // Use this for initialization
     void Start()
     {
+        _tag = "lightSwitch" + (Lower ? "Lower" : "Upper");
         Player = transform.name.Remove(0, transform.name.Length - 1);
     }
 
@@ -27,7 +30,7 @@ public class PlayerDoorSwitch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
+        if (other.gameObject.tag == _tag)
         {
             _onCollider = true;
         }
@@ -35,24 +38,24 @@ public class PlayerDoorSwitch : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper") && Input.GetButtonDown($"Player{Player}Inter1"))
+        if (other.gameObject.tag == _tag && Input.GetButtonDown($"Player{Player}Inter1"))
         {
-            var s = other.gameObject.transform.GetComponentInChildren<DoorSwitch>();
+            var s = other.gameObject.transform.GetComponentInChildren<LightSwitch>();
             if (s == null) return;
             _buttonDown = true;
-            StartCoroutine(ButtonDownTime(HoldTime, s.DoorRepair));
+            StartCoroutine(ButtonDownTime(HoldTime, x => s.Repair(x)));
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
+        if (other.gameObject.tag == _tag)
         {
             _onCollider = false;
         }
     }
 
-    IEnumerator ButtonDownTime(float holdTime, Action callback)
+    IEnumerator ButtonDownTime(float holdTime, Action<float> callback)
     {
         var startTime = Time.time;
 
@@ -62,6 +65,6 @@ public class PlayerDoorSwitch : MonoBehaviour
         }
         yield return null;
         if (_buttonDown && (Time.time - startTime >= holdTime) && _onCollider)
-            callback();
+            callback(1);
     }
 }
