@@ -10,6 +10,8 @@ TagManager:
   - doorButtonUpper
   - doorButtonLower
   - ThingsThatBreakStuff
+  - door
+  - doorButton
   layers:
   - Default
   - TransparentFX
