@@ -49,6 +49,7 @@ public class Holes : MonoBehaviour, IBreakable {
         float yPos = Random.Range(spawnAreas[spawnArea].transform.position.y, spawnAreas[spawnArea + 1].transform.position.y);
         Vector2 spawnPos = new Vector2(xPos,yPos);
         Instantiate(holeGraphic, spawnPos, holeGraphic.transform.rotation);
+
     }
 
 
