@@ -18,7 +18,7 @@ public class ControllerPlayerOne : MonoBehaviour {
     void FixedUpdate()
     {
         //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis ("Horizontal1");
+        float moveHorizontal = Input.GetAxis ("HorizontalPlayer1");
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = 0;
