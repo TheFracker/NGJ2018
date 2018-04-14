@@ -1,21 +1,21 @@
 fileFormatVersion: 2
-guid: dbb938511a57f2045a09ed7f66a26ee2
-timeCreated: 1523734045
+guid: 5f203e5825450be469ebcec4fc6662f9
+timeCreated: 1523736158
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Fish01_450x540_0
-    21300002: Fish01_450x540_1
-    21300004: Fish01_450x540_2
-    21300006: Fish01_450x540_3
-    21300008: Fish01_450x540_4
-    21300010: Fish01_450x540_5
-    21300012: Fish01_450x540_6
-    21300014: Fish01_450x540_7
-    21300016: Fish01_450x540_8
-    21300018: Fish01_450x540_9
-    21300020: Fish01_450x540_10
-    21300022: Fish01_450x540_11
+    21300000: Fish02_450x540_0
+    21300002: Fish02_450x540_1
+    21300004: Fish02_450x540_2
+    21300006: Fish02_450x540_3
+    21300008: Fish02_450x540_4
+    21300010: Fish02_450x540_5
+    21300012: Fish02_450x540_6
+    21300014: Fish02_450x540_7
+    21300016: Fish02_450x540_8
+    21300018: Fish02_450x540_9
+    21300020: Fish02_450x540_10
+    21300022: Fish02_450x540_11
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -102,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fish01_450x540_0
+      name: Fish02_450x540_0
       rect:
         serializedVersion: 2
         x: 0
@@ -116,7 +116,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_1
+      name: Fish02_450x540_1
       rect:
         serializedVersion: 2
         x: 450
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_2
+      name: Fish02_450x540_2
       rect:
         serializedVersion: 2
         x: 900
@@ -144,7 +144,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_3
+      name: Fish02_450x540_3
       rect:
         serializedVersion: 2
         x: 1350
@@ -158,7 +158,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_4
+      name: Fish02_450x540_4
       rect:
         serializedVersion: 2
         x: 0
@@ -172,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_5
+      name: Fish02_450x540_5
       rect:
         serializedVersion: 2
         x: 450
@@ -186,7 +186,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_6
+      name: Fish02_450x540_6
       rect:
         serializedVersion: 2
         x: 900
@@ -200,7 +200,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_7
+      name: Fish02_450x540_7
       rect:
         serializedVersion: 2
         x: 1350
@@ -214,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_8
+      name: Fish02_450x540_8
       rect:
         serializedVersion: 2
         x: 0
@@ -228,7 +228,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_9
+      name: Fish02_450x540_9
       rect:
         serializedVersion: 2
         x: 450
@@ -242,7 +242,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_10
+      name: Fish02_450x540_10
       rect:
         serializedVersion: 2
         x: 900
@@ -256,7 +256,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fish01_450x540_11
+      name: Fish02_450x540_11
       rect:
         serializedVersion: 2
         x: 1350
