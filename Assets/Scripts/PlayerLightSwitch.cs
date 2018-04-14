@@ -43,7 +43,7 @@ public class PlayerLightSwitch : MonoBehaviour
             var s = other.gameObject.transform.GetComponentInChildren<LightSwitch>();
             if (s == null) return;
             _buttonDown = true;
-            StartCoroutine(ButtonDownTime(HoldTime, x => s.Repair(1f)));
+            StartCoroutine(ButtonDownTime(HoldTime, x => s.Repair(x)));
         }
     }
 
@@ -65,6 +65,6 @@ public class PlayerLightSwitch : MonoBehaviour
         }
         yield return null;
         if (_buttonDown && (Time.time - startTime >= holdTime) && _onCollider)
-            callback();
+            callback(1);
     }
 }
