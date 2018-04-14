@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class AudioContainer : MonoBehaviour
+public class AudioContainer : MonoBehaviour, IAudioContainer
 {
     [SerializeField]
     List<string> Keys;

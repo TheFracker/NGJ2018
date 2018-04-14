@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Menu.unity
+    guid: e02bcb22bcd5c4254b717fa3e7f3fd63
+  - enabled: 0
+    path: Assets/Scenes/Christopher Scene.unity
+    guid: dcc0df60aabf44a49819d2e40074c990
