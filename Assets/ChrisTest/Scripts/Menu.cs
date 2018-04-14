@@ -54,11 +54,12 @@ public class Menu : MonoBehaviour {
         if(onStart && Input.GetButtonDown("Player1Inter1"))
         {
             print("Starting Final");
-            //SceneManager.LoadScene("Final");
+            SceneManager.LoadScene("Christopher Scene");
         }
         if (onQuit && Input.GetButtonDown("Player1Inter1"))
         {
             print("Quiting");
+            Application.Quit();
             //SceneManager.LoadScene("Final");
         }
 
