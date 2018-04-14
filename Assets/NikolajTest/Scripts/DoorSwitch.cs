@@ -7,23 +7,20 @@ public class DoorSwitch : MonoBehaviour, IBreakable
     public List<DoorCollider> doors = new List<DoorCollider>();
     public bool doorsBroken = false;
 
+    
+
     // Use this for initialization
     void Start()
     {
-         doorsBroken = false;
+        doorsBroken = false;
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && doorsBroken == false)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Break();
         }
-
-       /*if (Input.GetButtonDown("Fire2") && doorsBroken == true)
-        {
-            DoorRepair();
-        }*/
 
     }
 
@@ -37,7 +34,7 @@ public class DoorSwitch : MonoBehaviour, IBreakable
         doorsBroken = true;
     }
 
-    void DoorRepair()
+    public void DoorRepair()
     {
         print("doors repaired");
         foreach (var door in doors)

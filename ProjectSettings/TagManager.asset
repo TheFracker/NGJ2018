@@ -7,6 +7,7 @@ TagManager:
   - Grabable
   - Consol
   - Consol1
+  - doorButtonUpper
   layers:
   - Default
   - TransparentFX

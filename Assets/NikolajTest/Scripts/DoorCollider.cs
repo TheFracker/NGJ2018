@@ -14,8 +14,7 @@ public class DoorCollider : MonoBehaviour
         set
         {
             _broken = value;
-            if (!_broken)
-                open = true;
+            open = !value;
         }
     }
     public SpriteRenderer thisSpriteRenderer;
@@ -38,12 +37,12 @@ public class DoorCollider : MonoBehaviour
     {
         if (!broken) return;
 
-        if (doorCollider && Input.GetButtonDown("Fire1"))
+        if (doorCollider && Input.GetButtonDown("Player1Inter1"))
         {
             buttonDown = true;
             StartCoroutine(buttonDownTime(holdTime));
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Player1Inter1"))
         {
             buttonDown = false;
         }
@@ -59,6 +58,7 @@ public class DoorCollider : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (!broken) return;
         if (other.gameObject.tag == "Player")
         {
             doorCollider = false;
@@ -70,7 +70,6 @@ public class DoorCollider : MonoBehaviour
     IEnumerator buttonDownTime(float holdTime)
     {
         var startTime = Time.time;
-        print(buttonDown && Time.time - startTime < holdTime);
         while (buttonDown && Time.time - startTime < holdTime)
         {
             yield return null;
