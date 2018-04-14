@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorSwitch : MonoBehaviour
+public class DoorSwitch : MonoBehaviour, IBreakable
 {
     public List<DoorCollider> doors = new List<DoorCollider>();
     public bool doorsBroken = false;
@@ -17,7 +17,7 @@ public class DoorSwitch : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && doorsBroken == false)
         {
-            DoorBreak();
+            Break();
         }
 
        /*if (Input.GetButtonDown("Fire2") && doorsBroken == true)
@@ -27,7 +27,7 @@ public class DoorSwitch : MonoBehaviour
 
     }
 
-    void DoorBreak()
+    public void Break()
     {
         print("doors broken");
         foreach (var door in doors)
