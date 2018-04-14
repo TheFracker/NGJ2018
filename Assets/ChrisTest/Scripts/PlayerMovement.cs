@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour {
         for (int i = 0; i < 13; i++)
         {
             _clips.Add(gameObject.AddComponent<AudioSource>());
+            _clips[i].volume = 0.2f;
         }
 
         _clips[0].clip = clip1;
@@ -56,6 +57,8 @@ public class PlayerMovement : MonoBehaviour {
         _clips[10].clip = clip11;
         _clips[11].clip = clip12;
         _clips[12].clip = clip13;
+
+
 
 
     }
@@ -81,9 +84,11 @@ public class PlayerMovement : MonoBehaviour {
 
         }
 
-        if(_rb2D.velocity.x > 0.5 && _rb2D.velocity.x < - 0.5)
+        while(_rb2D.velocity.x > 0.1 || _rb2D.velocity.x < - 0.1)
         {
+
             walkingSound();
+
         }
 
         if ( moveHorizontal <0 && !_movingRight)
@@ -104,6 +109,10 @@ public class PlayerMovement : MonoBehaviour {
     {
         clipNumberF = Random.Range(0f, 13f);
         clipNumberI = Mathf.RoundToInt(clipNumberF);
-        _clips[clipNumberI].Play();
+        if (_clips[clipNumberI].isPlaying == false) 
+        {
+            _clips[clipNumberI].PlayDelayed(0.35f); 
+
+        }
     }
 }
