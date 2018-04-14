@@ -11,8 +11,12 @@ public class Menu : MonoBehaviour {
     bool something;
     public GameObject btnStart;
     public GameObject btnStartHover;
+    public GameObject btnStartPress;
     public GameObject btnQuit;
     public GameObject btnQuitHover;
+    public GameObject btnQuitPress;
+
+
 
 
 
@@ -20,6 +24,9 @@ public class Menu : MonoBehaviour {
 	void Start () {
         btnQuitHover.SetActive(false);
         btnStartHover.SetActive(true);
+        btnStartPress.SetActive(false);
+        btnQuitPress.SetActive(false);
+
 	}
 	
 	// Update is called once per frame
@@ -53,14 +60,19 @@ public class Menu : MonoBehaviour {
 
         if(onStart && Input.GetButtonDown("Player1Inter1"))
         {
-            print("Starting Final");
-            SceneManager.LoadScene("Christopher Scene");
+            btnStartPress.SetActive(true);
+            btnStartHover.SetActive(false);
+            Invoke("starting", 1);
+
+
+
         }
         if (onQuit && Input.GetButtonDown("Player1Inter1"))
         {
-            print("Quiting");
-            Application.Quit();
-            //SceneManager.LoadScene("Final");
+            btnQuitPress.SetActive(true);
+            btnQuitHover.SetActive(false);
+            Invoke("quitting", 1);
+
         }
 
 
@@ -70,4 +82,16 @@ public class Menu : MonoBehaviour {
        
 		
 	}
+
+    void quitting()
+    {
+        print("Quiting");
+        Application.Quit();
+    }
+
+    void starting()
+    {
+        print("Starting Final");
+       // SceneManager.LoadScene("Scene"); //STARTING SCENE
+    }
 }
