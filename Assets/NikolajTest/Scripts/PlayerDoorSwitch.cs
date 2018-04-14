@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System;
+using MEC;
 using UnityEngine;
 
 public class PlayerDoorSwitch : MonoBehaviour
@@ -40,7 +41,7 @@ public class PlayerDoorSwitch : MonoBehaviour
             var s = other.gameObject.transform.GetComponentInChildren<DoorSwitch>();
             if (s == null) return;
             _buttonDown = true;
-            StartCoroutine(ButtonDownTime(HoldTime, s.DoorRepair));
+            StartCoroutine(ButtonDownTime(HoldTime, (f,c) => s.Repair(f,c), s.DoorRepair));
         }
     }
 
@@ -52,16 +53,18 @@ public class PlayerDoorSwitch : MonoBehaviour
         }
     }
 
-    IEnumerator ButtonDownTime(float holdTime, Action callback)
+    IEnumerator ButtonDownTime(float holdTime, Func<float,Action,string> callback, Action call)
     {
+        var routineTag = callback(holdTime, call);
+        print(routineTag);
         var startTime = Time.time;
-
         while (_buttonDown && Time.time - startTime < holdTime && _onCollider)
         {
+            print("While");
             yield return null;
         }
-        yield return null;
-        if (_buttonDown && (Time.time - startTime >= holdTime) && _onCollider)
-            callback();
+
+        if (!(_buttonDown && Time.time - startTime < holdTime && _onCollider))
+            Timing.KillCoroutines(routineTag);
     }
 }
