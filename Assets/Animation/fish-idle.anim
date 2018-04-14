@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Fish_idle
+  m_Name: fish-idle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -28,7 +28,7 @@ AnimationClip:
       value: {fileID: 21300006, guid: 94899845630df2141b0430a8ac4f363c, type: 3}
     - time: 0.33333334
       value: {fileID: 21300008, guid: 94899845630df2141b0430a8ac4f363c, type: 3}
-    - time: 0.4166667
+    - time: 0.41666666
       value: {fileID: 21300010, guid: 94899845630df2141b0430a8ac4f363c, type: 3}
     attribute: m_Sprite
     path: 
