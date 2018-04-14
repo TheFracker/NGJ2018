@@ -4,8 +4,9 @@ using UnityEngine;
 using MEC;
 using UnityEditor;
 
-public abstract class Repairable : MonoBehaviour
+public abstract class Repairable : MonoBehaviour, IRepairProgress
 {
+    public float Progress { get; private set; }
 
     public string Repair(float timeToRepair)
     {
@@ -23,13 +24,28 @@ public abstract class Repairable : MonoBehaviour
 
     private IEnumerator<float> RepairRoutine(float timeToRepair)
     {
-        yield return Timing.WaitForSeconds(timeToRepair);
+        var startTime = Time.time;
+
+        while (Time.time - startTime < timeToRepair)
+        {
+            Progress = (Time.time - startTime) / timeToRepair;
+            print(Progress);
+            yield return Timing.WaitForOneFrame;
+        }
         Locator.GetGauge().Subtract();
     }
 
     private IEnumerator<float> RepairRoutine(float timeToRepair, Action callback)
     {
-        yield return Timing.WaitForSeconds(timeToRepair);
+
+        var startTime = Time.time;
+
+        while (Time.time - startTime < timeToRepair)
+        {
+            Progress = (Time.time - startTime) / timeToRepair;
+            print(Progress);
+            yield return Timing.WaitForOneFrame;
+        }
         Locator.GetGauge().Subtract();
         callback();
     }
