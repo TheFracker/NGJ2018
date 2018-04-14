@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IGauge
 {
+    int FailureCounter { get; }
     void Add();
     void Subtract();
 }

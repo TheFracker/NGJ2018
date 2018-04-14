@@ -7,7 +7,8 @@ TagManager:
   - Grabable
   - Consol
   - Consol1
-  - ThingsThatBreakStuff
+  - doorButtonUpper
+  - doorButtonLower
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - ToolSet
-  - PlayerLayer
+  - 
+  - 
   - 
   - 
   - 
