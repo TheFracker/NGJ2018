@@ -7,9 +7,8 @@ public class PlayerGrabber : MonoBehaviour
     public bool Grabbed { get; private set; }
 
     RaycastHit2D _hit;
-    public Transform HoldPoint;
     public Transform OtherConsolePoint;
-    public float Distance = 2f;
+    public float Distance = 1f;
     public bool PlayerOnConsol;
     public GameObject Consol;
     public GameObject Kit;
@@ -24,12 +23,29 @@ public class PlayerGrabber : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetButtonDown($"Player{PlayerNumber}Inter1"))
+        if (Input.anyKeyDown)
+        {
+            print("W");
+        }
+       if (Input.GetButtonDown($"Player{PlayerNumber}Inter1"))
         {
             if (!Grabbed)
             {
                 Physics2D.queriesStartInColliders = false;
                 _hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, Distance, Mask.value);
+                if (_hit == false) {
+                    _hit = Physics2D.Raycast(transform.position, Vector2.left * transform.localScale.x, Distance, Mask.value);
+                }
+                if(_hit == false)
+                {
+                    _hit = Physics2D.Raycast(Vector2.right * transform.localScale.x, transform.position, Distance, Mask.value);
+                }
+                if (_hit == false)
+                {
+                    _hit = Physics2D.Raycast(Vector2.left * transform.localScale.x, transform.position,  Distance, Mask.value);
+                }
+
+
 
                 if (_hit.collider != null)
                 {
@@ -66,12 +82,15 @@ public class PlayerGrabber : MonoBehaviour
         }
     }
 
+   
+
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject == Consol)
         {
             PlayerOnConsol = true;
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)

@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public float Speed;             //Floating point variable to store the player's movement speed.
+    public float maxSpeed;
 
     private Rigidbody2D _rb2D;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
 

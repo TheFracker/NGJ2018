@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595141281997326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.29, y: -2.41, z: -0.15120065}
+  m_LocalPosition: {x: -5.99, y: -0.54, z: -0.15120065}
   m_LocalScale: {x: 0.20193964, y: 0.20193964, z: 0.20193964}
   m_Children:
   - {fileID: 4338376374741092}
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5442a2a45afa74a2186abc372ae6c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  Speed: 10
 --- !u!114 &114251974356569352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,16 +230,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d425e6ba6cf4f4d08b4335aa6c96fcf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInter1: 
-  holdPoint: {fileID: 4338376374741092}
-  otherConsolePoint: {fileID: 0}
-  distance: 2
-  playerOnConsol: 0
-  consol: {fileID: 0}
-  kit: {fileID: 0}
-  mask:
+  HoldPoint: {fileID: 0}
+  OtherConsolePoint: {fileID: 0}
+  Distance: 2
+  PlayerOnConsol: 0
+  Consol: {fileID: 0}
+  Kit: {fileID: 0}
+  Mask:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 8
 --- !u!212 &212447364762901816
 SpriteRenderer:
   m_ObjectHideFlags: 1
