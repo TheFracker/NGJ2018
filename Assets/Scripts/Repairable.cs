@@ -11,6 +11,6 @@ public abstract class Repairable : MonoBehaviour
 
     private IEnumerator<float> RepairRoutine(float timeToRepair)
     {
-        yield return null
+        yield return Timing.WaitForOneFrame;
     }
 }
