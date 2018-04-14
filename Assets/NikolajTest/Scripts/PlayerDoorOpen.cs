@@ -5,49 +5,44 @@ using System;
 
 public class PlayerDoorOpen : MonoBehaviour
 {
-    public bool onCollider;
-    private bool buttonDown;
-    public float holdTime = 2f;
-    public string player;
-    public bool lower = false;
+    public bool OnCollider;
+    private bool _buttonDown;
+    public float HoldTime = 2f;
+    public string Player;
+    public bool Lower = false;
 
     // Use this for initialization
     void Start()
     {
-        onCollider = false;
+        OnCollider = false;
 
-        player = transform.name.Remove(0, transform.name.Length - 1);
+        Player = transform.name.Remove(0, transform.name.Length - 1);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        if (onCollider && Input.GetButtonDown("Player1Inter1"))
+        if (Input.GetButtonUp($"Player{Player}Inter1"))
         {
-            buttonDown = true;
-        }
-        if (Input.GetButtonUp("Player1Inter1"))
-        {
-            buttonDown = false;
+            _buttonDown = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "doorButton" + (lower ? "Lower" : "Upper"))
+        if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
         {
-            onCollider = true;
+            OnCollider = true;
             print("triggered");
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if ((Input.GetButtonDown($"Player{player}Inter1")))
+        if (Input.GetButtonDown($"Player{Player}Inter1"))
         {
             var s = other.gameObject.transform.GetComponentInParent<Door>();
-            buttonDown = true;
-            StartCoroutine(buttonDownTime(holdTime, s.DoorOpen));
+            _buttonDown = true;
+            StartCoroutine(buttonDownTime(HoldTime, s.DoorOpen));
         }
     }
 
@@ -55,7 +50,7 @@ public class PlayerDoorOpen : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            onCollider = false;
+            OnCollider = false;
             print("Exited");
         }
     }
@@ -63,12 +58,12 @@ public class PlayerDoorOpen : MonoBehaviour
     IEnumerator buttonDownTime(float holdTime, Action callback)
     {
         var startTime = Time.time;
-        while (buttonDown && Time.time - startTime < holdTime)
+        while (_buttonDown && Time.time - startTime < holdTime)
         {
             yield return null;
         }
         yield return null;
-        if (buttonDown && (Time.time - startTime >= holdTime))
+        if (_buttonDown && (Time.time - startTime >= holdTime))
             callback();
     }
 }
