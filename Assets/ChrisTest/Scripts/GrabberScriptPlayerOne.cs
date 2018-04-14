@@ -14,6 +14,8 @@ public class GrabberScriptPlayerOne : MonoBehaviour {
     public float throwForce = 2f;
     public bool playerOnConsol;
     public GameObject consol;
+    public GameObject kit;
+    public LayerMask mask = 8;
 
 
 	// Use this for initialization
@@ -32,7 +34,7 @@ public class GrabberScriptPlayerOne : MonoBehaviour {
             if (!grabbed)
             {
                 Physics2D.queriesStartInColliders = false;
-                hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+                hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance, mask.value );
 
                 if (hit.collider != null)
                 {
@@ -42,13 +44,13 @@ public class GrabberScriptPlayerOne : MonoBehaviour {
                 }
                 //grab
             }
-            else
+            else if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
                 //throw
                 grabbed = false;
 
 
-                if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null && playerOnConsol == true)
+                if (playerOnConsol == true)
                 {
                     hit.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint.position);
                     print("is trigger");
