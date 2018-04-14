@@ -5,7 +5,7 @@ using System;
 
 public class PlayerDoorOpen : MonoBehaviour
 {
-    public bool OnCollider;
+    private bool _onCollider;
     private bool _buttonDown;
     public float HoldTime = 2f;
     public string Player;
@@ -14,7 +14,7 @@ public class PlayerDoorOpen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        OnCollider = false;
+        _onCollider = false;
 
         Player = transform.name.Remove(0, transform.name.Length - 1);
     }
@@ -31,7 +31,7 @@ public class PlayerDoorOpen : MonoBehaviour
     {
         if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
         {
-            OnCollider = true;
+            _onCollider = true;
         }
     }
 
@@ -50,19 +50,19 @@ public class PlayerDoorOpen : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            OnCollider = false;
+            _onCollider = false;
         }
     }
 
     IEnumerator ButtonDownTime(float holdTime, Action callback)
     {
         var startTime = Time.time;
-        while (_buttonDown && Time.time - startTime < holdTime)
+        while (_buttonDown && Time.time - startTime < holdTime && _onCollider)
         {
             yield return null;
         }
         yield return null;
-        if (_buttonDown && (Time.time - startTime >= holdTime))
+        if (_buttonDown && Time.time - startTime >= holdTime && _onCollider)
             callback();
     }
 }

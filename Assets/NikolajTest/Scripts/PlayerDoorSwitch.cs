@@ -64,5 +64,4 @@ public class PlayerDoorSwitch : MonoBehaviour
         if (_buttonDown && (Time.time - startTime >= holdTime) && _onCollider)
             callback();
     }
-
 }
