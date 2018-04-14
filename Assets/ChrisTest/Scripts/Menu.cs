@@ -1,10 +1,12 @@
-<<<<<<< HEAD
+﻿
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour {
+
+public class Menu : MonoBehaviour
+{
 
     bool onStart;
     bool onQuit;
@@ -19,46 +21,17 @@ public class Menu : MonoBehaviour {
 
 
 
-
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         btnQuitHover.SetActive(false);
         btnStartHover.SetActive(true);
-        btnStartPress.SetActive(false);
-        btnQuitPress.SetActive(false);
+    }
 
-	}
-	
-	// Update is called once per frame
-=======
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+    // Update is called once per frame
 
-public class Menu : MonoBehaviour {
-
-    bool onStart;
-    bool onQuit;
-    bool gameStarting;
-    bool something;
-    public GameObject btnStart;
-    public GameObject btnStartHover;
-    public GameObject btnQuit;
-    public GameObject btnQuitHover;
-
-
-
-	// Use this for initialization
-	void Start () {
-        btnQuitHover.SetActive(false);
-        btnStartHover.SetActive(true);
-	}
-	
-	// Update is called once per frame
->>>>>>> 37e579341a431baae35e1c54b5b41e3629ca04a3
-	void Update () {
+    void Update()
+    {
 
 
         if (Input.GetAxis("Vertical") < 0)
@@ -84,10 +57,10 @@ public class Menu : MonoBehaviour {
             btnQuit.SetActive(false);
 
             //print(Input.GetAxis("Vertical"));
-<<<<<<< HEAD
+
         }
 
-        if(onStart && Input.GetButtonDown("Player1Inter1"))
+        if (onStart && Input.GetButtonDown("Player1Inter1"))
         {
             btnStartPress.SetActive(true);
             btnStartHover.SetActive(false);
@@ -104,13 +77,7 @@ public class Menu : MonoBehaviour {
 
         }
 
-
-
-
-
-       
-		
-	}
+    }
 
     void quitting()
     {
@@ -121,30 +88,6 @@ public class Menu : MonoBehaviour {
     void starting()
     {
         print("Starting Final");
-       // SceneManager.LoadScene("Scene"); //STARTING SCENE
+        // SceneManager.LoadScene("Scene"); //STARTING SCENE
     }
 }
-=======
-        }
-
-        if(onStart && Input.GetButtonDown("Player1Inter1"))
-        {
-            print("Starting Final");
-            SceneManager.LoadScene("Christopher Scene");
-        }
-        if (onQuit && Input.GetButtonDown("Player1Inter1"))
-        {
-            print("Quiting");
-            Application.Quit();
-            //SceneManager.LoadScene("Final");
-        }
-
-
-
-
-
-       
-		
-	}
-}
->>>>>>> 37e579341a431baae35e1c54b5b41e3629ca04a3
