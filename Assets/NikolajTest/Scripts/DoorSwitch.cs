@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorSwitch : MonoBehaviour, IBreakable
+public class DoorSwitch : Repairable, IBreakable
 {
     public List<DoorCollider> Doors = new List<DoorCollider>();
     public bool DoorsBroken;
@@ -35,5 +35,4 @@ public class DoorSwitch : MonoBehaviour, IBreakable
         }
         DoorsBroken = false;
     }
-
 }

@@ -1,16 +1,52 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using MEC;
+using UnityEditor;
 
-public abstract class Repairable : MonoBehaviour
+public abstract class Repairable : MonoBehaviour, IRepairProgress
 {
-    public void Repair(float timeToRepair)
+    public float Progress { get; private set; }
+
+    public string Repair(float timeToRepair)
     {
-        Timing.RunCoroutine(RepairRoutine(timeToRepair));
+        var tag = GUID.Generate().ToString();
+        Timing.RunCoroutine(RepairRoutine(timeToRepair), tag);
+        return tag;
+    }
+
+    public string Repair(float timeToRepair, Action callback)
+    {
+        var tag = GUID.Generate().ToString();
+        Timing.RunCoroutine(RepairRoutine(timeToRepair, callback), tag);
+        return tag;
     }
 
     private IEnumerator<float> RepairRoutine(float timeToRepair)
     {
-        yield return Timing.WaitForOneFrame;
+        var startTime = Time.time;
+
+        while (Time.time - startTime < timeToRepair)
+        {
+            Progress = (Time.time - startTime) / timeToRepair;
+            print(Progress);
+            yield return Timing.WaitForOneFrame;
+        }
+        Locator.GetGauge().Subtract();
+    }
+
+    private IEnumerator<float> RepairRoutine(float timeToRepair, Action callback)
+    {
+
+        var startTime = Time.time;
+
+        while (Time.time - startTime < timeToRepair)
+        {
+            Progress = (Time.time - startTime) / timeToRepair;
+            print(Progress);
+            yield return Timing.WaitForOneFrame;
+        }
+        Locator.GetGauge().Subtract();
+        callback();
     }
 }

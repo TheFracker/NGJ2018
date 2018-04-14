@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System;
+using MEC;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDoorSwitch : MonoBehaviour
 {
@@ -11,11 +13,17 @@ public class PlayerDoorSwitch : MonoBehaviour
     public string Player;
     private string _tag;
 
+    public SpriteRenderer oButton;
+    public Image progressBar;
+
     // Use this for initialization
     void Start()
     {
         Player = transform.name.Remove(0, transform.name.Length - 1);
         _tag = "doorButton" + (Lower ? "Lower" : "Upper");
+
+        oButton.enabled = false;
+        progressBar.enabled = false;
     }
 
     // Update is called once per frame
@@ -37,12 +45,16 @@ public class PlayerDoorSwitch : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == _tag && Input.GetButtonDown($"Player{Player}Inter1"))
+        if (other.gameObject.tag == _tag)
         {
             var s = other.gameObject.transform.GetComponentInChildren<DoorSwitch>();
             if (s == null) return;
-            _buttonDown = true;
-            StartCoroutine(ButtonDownTime(HoldTime, s.DoorRepair));
+            oButton.enabled = s.DoorsBroken;
+            if (Input.GetButtonDown($"Player{Player}Inter1"))
+            {
+                _buttonDown = true;
+                StartCoroutine(ButtonDownTime(HoldTime, (f, c) => s.Repair(f, c), s.DoorRepair, s));
+            }
         }
     }
 
@@ -51,19 +63,28 @@ public class PlayerDoorSwitch : MonoBehaviour
         if (other.gameObject.tag == _tag)
         {
             _onCollider = false;
+            oButton.enabled = false;
+            progressBar.enabled = false;
         }
     }
 
-    IEnumerator ButtonDownTime(float holdTime, Action callback)
+    IEnumerator ButtonDownTime(float holdTime, Func<float, Action, string> callback, Action call, IRepairProgress prog)
     {
+        var routineTag = callback(holdTime, call);
+        print(routineTag);
         var startTime = Time.time;
-
+        progressBar.fillAmount = 0;
+        progressBar.enabled = true;
         while (_buttonDown && Time.time - startTime < holdTime && _onCollider)
         {
+            progressBar.fillAmount = prog.Progress;
             yield return null;
         }
+
+        progressBar.enabled = false;
+
         yield return null;
-        if (_buttonDown && (Time.time - startTime >= holdTime) && _onCollider)
-            callback();
+        if (!(_buttonDown && Time.time - startTime < holdTime && _onCollider))
+            Timing.KillCoroutines(routineTag);
     }
 }

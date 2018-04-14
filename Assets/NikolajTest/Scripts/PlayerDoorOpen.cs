@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MEC;
 using UnityEngine.UI;
 
 public class PlayerDoorOpen : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerDoorOpen : MonoBehaviour
     private bool _buttonDown;
     public float HoldTime = 2f;
     public string Player;
+    private string _tag = "door";
 
     public SpriteRenderer oButton;
     public Image progressBar;
@@ -24,7 +26,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
         Player = transform.name.Remove(0, transform.name.Length - 1);
     }
-    
+
     void Update()
     {
         if (Input.GetButtonUp($"Player{Player}Inter1"))
@@ -38,21 +40,23 @@ public class PlayerDoorOpen : MonoBehaviour
         if (other.gameObject.tag == "door")
         {
             _onCollider = true;
-            
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        var doors = other.gameObject.transform.GetComponent<DoorCollider>();
-        if (doors.Broken == true) oButton.enabled = true;
-
-        if (other.gameObject.tag == "door" && Input.GetButtonDown($"Player{Player}Inter1"))
+        if (other.gameObject.tag == "door")
         {
-            var s = other.gameObject.transform.GetComponentInParent<Door>();
-            if (s == null) return;
-            _buttonDown = true;
-            StartCoroutine(ButtonDownTime(HoldTime, s.DoorOpen));
+            var door = other.gameObject.transform.GetComponent<DoorCollider>();
+            if (door == null) return;
+            oButton.enabled = door.Broken;
+            if (Input.GetButtonDown($"Player{Player}Inter1"))
+            {
+                var s = other.gameObject.transform.GetComponentInParent<Door>();
+                if (s == null) return;
+                _buttonDown = true;
+                StartCoroutine(ButtonDownTime(HoldTime, (f, c) => s.Repair(f, c), s.DoorOpen, s));
+            }
         }
     }
 
@@ -66,16 +70,23 @@ public class PlayerDoorOpen : MonoBehaviour
         }
     }
 
-    IEnumerator ButtonDownTime(float holdTime, Action callback)
+    IEnumerator ButtonDownTime(float holdTime, Func<float, Action, string> callback, Action call, IRepairProgress prog)
     {
+        var routineTag = callback(holdTime, call);
+        print(routineTag);
         var startTime = Time.time;
+        progressBar.fillAmount = 0;
+        progressBar.enabled = true;
         while (_buttonDown && Time.time - startTime < holdTime && _onCollider)
         {
-            progressBar.enabled = true;
+            progressBar.fillAmount = prog.Progress;
             yield return null;
         }
+
+        progressBar.enabled = false;
+
         yield return null;
-        if (_buttonDown && Time.time - startTime >= holdTime && _onCollider)
-            callback();
+        if (!(_buttonDown && Time.time - startTime < holdTime && _onCollider))
+            Timing.KillCoroutines(routineTag);
     }
 }
