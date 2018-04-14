@@ -11,9 +11,15 @@ public class HoleScript : MonoBehaviour {
     [SerializeField]
     List<AudioClip> runningWaterSounds;
 
+    Animator anim;
+    [SerializeField]
+    bool holeFixed;
+
 
     // Use this for initialization
     void Start() {
+
+        anim = this.gameObject.GetComponent<Animator>();
         breakingAudio = gameObject.AddComponent<AudioSource>();
         runningWaterAudio = gameObject.AddComponent<AudioSource>();
 
@@ -24,11 +30,17 @@ public class HoleScript : MonoBehaviour {
         print(runningWaterAudio.clip);
         runningWaterAudio.PlayDelayed(0.5f);
 
-
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
+
 	}
+
+    void HoleRepaird()
+    {
+        anim.SetBool("HoleFixed", holeFixed);
+    }
 }
