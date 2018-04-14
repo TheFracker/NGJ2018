@@ -320,7 +320,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 436274302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: holdPoint
   m_TagString: Untagged
   m_Icon: {fileID: -6431860639581277017, guid: 0000000000000000d000000000000000, type: 0}
@@ -334,7 +334,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 436274301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 2.2, z: 0}
+  m_LocalPosition: {x: 1.3, y: 1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1047839845}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 729351947}
   - component: {fileID: 729351952}
   - component: {fileID: 729351951}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerSag2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -372,18 +372,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1000278, y: -0.24643087}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.84, y: 3.58}
+    oldSize: {x: 4.5, y: 5.4}
     newSize: {x: 3.84, y: 3.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.84, y: 3.58}
+  m_Size: {x: 3.1509204, y: 4.564618}
   m_EdgeRadius: 0
 --- !u!50 &729351948
 Rigidbody2D:
@@ -439,7 +439,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c361b8576ccd4ba5965ef70f289e670, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e94cc1df93e6bfb4b9282b019bf02a6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -456,8 +456,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 729351946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.97, y: 1.12, z: -0.15120065}
-  m_LocalScale: {x: 0.33694282, y: 0.33694282, z: 0.33694282}
+  m_LocalPosition: {x: -1.9662, y: 1.12, z: -0.15120065}
+  m_LocalScale: {x: 0.3388257, y: 0.33694282, z: 0.33694282}
   m_Children:
   - {fileID: 2070875418}
   m_Father: {fileID: 0}
@@ -488,11 +488,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInter1: 
   holdPoint: {fileID: 2070875418}
-  otherConsolePoint: {fileID: 1063094689}
+  otherConsolePoint1: {fileID: 1063094689}
   distance: 2
   throwForce: 2
   playerOnConsol: 0
   consol: {fileID: 1564004337}
+  kit: {fileID: 1616826292}
+  mask:
+    serializedVersion: 2
+    m_Bits: 264
 --- !u!1 &1047839843
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +510,7 @@ GameObject:
   - component: {fileID: 1047839846}
   - component: {fileID: 1047839849}
   - component: {fileID: 1047839848}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerSag1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -547,7 +551,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f55cfc5a4afa5422290f85b068838854, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e94cc1df93e6bfb4b9282b019bf02a6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -564,7 +568,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1047839843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -3.31, z: -0.15120065}
+  m_LocalPosition: {x: 1.47, y: -3.1, z: -0.15120065}
   m_LocalScale: {x: 0.33694282, y: 0.33694282, z: 0.33694282}
   m_Children:
   - {fileID: 436274302}
@@ -583,18 +587,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12958074, y: -0.17429411}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.84, y: 3.58}
+    oldSize: {x: 4.5, y: 5.4}
     newSize: {x: 3.84, y: 3.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.84, y: 3.58}
+  m_Size: {x: 3.156755, y: 4.3997927}
   m_EdgeRadius: 0
 --- !u!50 &1047839847
 Rigidbody2D:
@@ -646,6 +650,10 @@ MonoBehaviour:
   throwForce: 2
   playerOnConsol: 0
   consol: {fileID: 234658569}
+  kit: {fileID: 1616826292}
+  mask:
+    serializedVersion: 2
+    m_Bits: 264
 --- !u!1 &1063094688
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,7 +991,7 @@ GameObject:
   - component: {fileID: 1616826293}
   - component: {fileID: 1616826295}
   - component: {fileID: 1616826296}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RepairKit
   m_TagString: Grabable
   m_Icon: {fileID: 0}
@@ -1041,7 +1049,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1616826292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.66, y: 1.73, z: -0.1204}
+  m_LocalPosition: {x: 4.2, y: 0.61, z: -0.1204}
   m_LocalScale: {x: 2.969451, y: 2.969451, z: 2.969451}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1059,7 +1067,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.018741593, y: 0.13119127}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1070,7 +1078,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.2825168, y: 0.49242344}
   m_EdgeRadius: 0
 --- !u!50 &1616826296
 Rigidbody2D:
@@ -1308,7 +1316,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2070875418}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Holdpoint2
   m_TagString: Untagged
   m_Icon: {fileID: -3701561207968579530, guid: 0000000000000000d000000000000000, type: 0}
@@ -1322,7 +1330,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2070875417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 2.2, z: 0}
+  m_LocalPosition: {x: 1.1, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 729351950}

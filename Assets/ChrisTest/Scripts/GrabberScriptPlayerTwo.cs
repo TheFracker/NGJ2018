@@ -10,11 +10,13 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
 
     RaycastHit2D hit2;
     public Transform holdPoint;
-    public Transform otherConsolePoint;
+    public Transform otherConsolePoint1;
     public float distance = 2f;
     public float throwForce = 2f;
     public bool playerOnConsol;
     public GameObject consol;
+    public GameObject kit;
+    public  LayerMask mask = 8;
 
     // Use this for initialization
     void Start()
@@ -33,9 +35,9 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
             if (!grabbed)
             {
                 Physics2D.queriesStartInColliders = false;
-                hit2 = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+                hit2 = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance, mask.value);
 
-                if (hit2.collider != null)
+                if (hit2.collider != null )
                 {
                     grabbed = true;
 
@@ -43,16 +45,16 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
                 }
                 //grab
             }
-            else
+            else if(hit2.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
                 //throw
                 grabbed = false;
 
 
-                if (hit2.collider.gameObject.GetComponent<Rigidbody2D>() != null && playerOnConsol == true)
+                if (playerOnConsol == true)
                 {
                     
-                    hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint.position);
+                    hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint1.position);
                     print("is trigger");
                 }
 
