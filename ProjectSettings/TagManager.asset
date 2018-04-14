@@ -9,6 +9,7 @@ TagManager:
   - Consol1
   - doorButtonUpper
   - doorButtonLower
+  - ThingsThatBreakStuff
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 537801513
+    locked: 0
+  - name: Objects
+    uniqueID: 1906076921
+    locked: 0
+  - name: PLAYER
+    uniqueID: 2736582117
+    locked: 0
+  - name: FG
+    uniqueID: 1881692057
+    locked: 0
+  - name: New Layer
+    uniqueID: 2695326855
     locked: 0

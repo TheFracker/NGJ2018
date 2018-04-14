@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4720886650329798}
   - component: {fileID: 212447364762901816}
   - component: {fileID: 50938158187639956}
-  - component: {fileID: 61790693902912672}
   - component: {fileID: 114251974356569352}
   - component: {fileID: 114175270343139318}
   - component: {fileID: 95222638204939026}
   - component: {fileID: 82957678963210036}
+  - component: {fileID: 70017548537491258}
   m_Layer: 9
   m_Name: PlayerOne
   m_TagString: Player
@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595141281997326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.47, y: -3.26, z: -0.15120065}
-  m_LocalScale: {x: 0.33694282, y: 0.33694282, z: 0.33694282}
+  m_LocalPosition: {x: -3.29, y: -2.41, z: -0.15120065}
+  m_LocalScale: {x: 0.20193964, y: 0.20193964, z: 0.20193964}
   m_Children:
   - {fileID: 4338376374741092}
   m_Father: {fileID: 0}
@@ -95,8 +95,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61790693902912672
-BoxCollider2D:
+--- !u!70 &70017548537491258
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -107,19 +107,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12958074, y: -0.17429411}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.5, y: 5.4}
-    newSize: {x: 3.84, y: 3.58}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.156755, y: 4.3997927}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.025230927, y: -0.55906034}
+  m_Size: {x: 1.9601752, y: 4.0018997}
+  m_Direction: 0
 --- !u!82 &82957678963210036
 AudioSource:
   m_ObjectHideFlags: 1
@@ -228,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5442a2a45afa74a2186abc372ae6c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 10
 --- !u!114 &114251974356569352
 MonoBehaviour:
   m_ObjectHideFlags: 1
