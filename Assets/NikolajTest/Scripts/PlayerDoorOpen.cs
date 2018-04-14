@@ -32,17 +32,17 @@ public class PlayerDoorOpen : MonoBehaviour
         if (other.gameObject.tag == "doorButton" + (Lower ? "Lower" : "Upper"))
         {
             OnCollider = true;
-            print("triggered");
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (Input.GetButtonDown($"Player{Player}Inter1"))
+        if (other.gameObject.tag == "door" && Input.GetButtonDown($"Player{Player}Inter1"))
         {
             var s = other.gameObject.transform.GetComponentInParent<Door>();
+            if (s == null) return;
             _buttonDown = true;
-            StartCoroutine(buttonDownTime(HoldTime, s.DoorOpen));
+            StartCoroutine(ButtonDownTime(HoldTime, s.DoorOpen));
         }
     }
 
@@ -51,11 +51,10 @@ public class PlayerDoorOpen : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             OnCollider = false;
-            print("Exited");
         }
     }
 
-    IEnumerator buttonDownTime(float holdTime, Action callback)
+    IEnumerator ButtonDownTime(float holdTime, Action callback)
     {
         var startTime = Time.time;
         while (_buttonDown && Time.time - startTime < holdTime)
