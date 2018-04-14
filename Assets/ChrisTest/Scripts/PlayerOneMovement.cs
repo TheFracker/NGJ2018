@@ -1,9 +1,8 @@
-
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Control : MonoBehaviour {
+public class PlayerOneMovement : MonoBehaviour {
 
     public float speed;             //Floating point variable to store the player's movement speed.
 
@@ -32,4 +31,3 @@ public class Control : MonoBehaviour {
         rb2d.AddForce (movement * speed);
     }
 }
-
