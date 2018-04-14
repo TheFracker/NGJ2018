@@ -51,6 +51,7 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
 
                 if (hit2.collider.gameObject.GetComponent<Rigidbody2D>() != null && playerOnConsol == true)
                 {
+                    
                     hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint.position);
                     print("is trigger");
                 }
@@ -77,14 +78,6 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
 
         }
     }
-
-    void onDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x * distance);
-    }
-
 
     void OnTriggerStay2D(Collider2D other)
     {
