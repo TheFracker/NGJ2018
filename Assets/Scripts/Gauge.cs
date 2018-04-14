@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gauge : MonoBehaviour, IGauge
+public class Gauge : IGauge
 {
     public int FailureCounter { get; private set; } = 0;
 
