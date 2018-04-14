@@ -23,15 +23,6 @@ public class Holes : MonoBehaviour, IBreakable {
         }
     }
 
-	// Use this for initialization
-	void Start () {
-
-       
-        
-
-
-        //holeGraphic.GetComponent<BoxCollider2D>().isTrigger = true;
-	}
 
 
     public void Break()

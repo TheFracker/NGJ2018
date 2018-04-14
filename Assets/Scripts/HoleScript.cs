@@ -20,8 +20,9 @@ public class HoleScript : MonoBehaviour {
         breakingAudio.clip = breakingSounds[Random.Range(0, breakingSounds.Count)];
         breakingAudio.PlayOneShot(breakingAudio.clip);
 
-        runningWaterAudio.clip = breakingSounds[Random.Range(0, runningWaterSounds.Count)];
-        runningWaterAudio.Play((uint)runningWaterAudio.clip.samples / 2);
+        runningWaterAudio.clip = runningWaterSounds[Random.Range(0, runningWaterSounds.Count)];
+        print(runningWaterAudio.clip);
+        runningWaterAudio.PlayDelayed(0.5f);
 
 
     }
