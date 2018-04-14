@@ -20,10 +20,14 @@ public class Gauge : MonoBehaviour, IGauge
     public void Add()
     {
         FailureCounter++;
+        if (FailureCounter > _maxFailures)
+            FailureCounter = _maxFailures;
     }
 
     public void Subtract()
     {
         FailureCounter--;
+        if (FailureCounter < 0)
+            FailureCounter = 0;
     }
 }
