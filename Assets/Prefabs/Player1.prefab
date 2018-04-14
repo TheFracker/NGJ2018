@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 95016423984157228}
   - component: {fileID: 82731356277867840}
   - component: {fileID: 70726072608331904}
+  - component: {fileID: 114839145277260904}
+  - component: {fileID: 114527896636550620}
   m_Layer: 9
   m_Name: Player1
   m_TagString: Player
@@ -191,6 +193,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 20
   maxSpeed: 5
+  clip1: {fileID: 8300000, guid: 212689a01edf947dc907429bd661d53d, type: 3}
+  clip2: {fileID: 8300000, guid: 401c81da963ee4b46a66d961b4e42c51, type: 3}
+  clip3: {fileID: 8300000, guid: 075a94e2316684669a982ec02b0b26a6, type: 3}
+  clip4: {fileID: 8300000, guid: 522680c5be420412fac49696073db68d, type: 3}
+  clip5: {fileID: 8300000, guid: 08d40636c357e4b849cf296b44587208, type: 3}
+  clip6: {fileID: 8300000, guid: 7d1e0e5f342044bb8ab317bf1ac0bf6a, type: 3}
+  clip7: {fileID: 8300000, guid: 38fa9c7d855b34e0988c02d049c241b8, type: 3}
+  clip8: {fileID: 8300000, guid: 771524dede23443b0bfc1a5a53b39052, type: 3}
+  clip9: {fileID: 8300000, guid: 11c109dab9226459392c8ff6c2b34760, type: 3}
+  clip10: {fileID: 8300000, guid: 882a5a51b5bde4ebcac386213b9599cb, type: 3}
+  clip11: {fileID: 8300000, guid: 9a2ae5de3b51c4d2cad814d4031fa2d8, type: 3}
+  clip12: {fileID: 8300000, guid: 1e573b2ca9b1c44ca9ce12aefab91ad9, type: 3}
+  clip13: {fileID: 8300000, guid: 6f6fc9b1ac94c4cbdbeb1a613617e28b, type: 3}
 --- !u!114 &114323627638883840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +225,39 @@ MonoBehaviour:
   Mask:
     serializedVersion: 2
     m_Bits: 256
+  starFishPickUp: {fileID: 8300000, guid: 9dbb0ed5aea1042a5935cf8a320fc827, type: 3}
+  starFishThrow: {fileID: 8300000, guid: ac7c8082a57114f62b5169af5569666e, type: 3}
+--- !u!114 &114527896636550620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084672455630850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5912b5a88f5e477419f455e9afb29352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldTime: 2
+  Lower: 0
+  Player: 
+  oButton: {fileID: 0}
+  progressBar: {fileID: 0}
+--- !u!114 &114839145277260904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084672455630850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad79ad4d3db96be46b4e0ef7b87b32c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldTime: 2
+  Player: 
+  oButton: {fileID: 0}
+  progressBar: {fileID: 0}
 --- !u!212 &212236477846937026
 SpriteRenderer:
   m_ObjectHideFlags: 1
