@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class Menu : MonoBehaviour {
     public GameObject btnStartHover;
     public GameObject btnQuit;
     public GameObject btnQuitHover;
+
 
 
 	// Use this for initialization
@@ -49,12 +51,23 @@ public class Menu : MonoBehaviour {
             //print(Input.GetAxis("Vertical"));
         }
 
+        if(onStart && Input.GetButtonDown("Player1Inter1"))
+        {
+            print("Starting Final");
+            SceneManager.LoadScene("Christopher Scene");
+        }
+        if (onQuit && Input.GetButtonDown("Player1Inter1"))
+        {
+            print("Quiting");
+            Application.Quit();
+            //SceneManager.LoadScene("Final");
+        }
 
 
 
 
-        print("start is " + onStart);
-        print("quit is " + onQuit);
+
+       
 		
 	}
 }

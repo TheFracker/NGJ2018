@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class LightSwitch : MonoBehaviour, IBreakable
+public class LightSwitch : Repairable, IBreakable
 {
     [SerializeField]
     private List<Light> lights = new List<Light>();
