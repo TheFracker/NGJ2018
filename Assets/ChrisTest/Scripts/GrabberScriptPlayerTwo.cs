@@ -10,11 +10,13 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
 
     RaycastHit2D hit2;
     public Transform holdPoint;
-    public Transform otherConsolePoint;
+    public Transform otherConsolePoint1;
     public float distance = 2f;
     public float throwForce = 2f;
     public bool playerOnConsol;
     public GameObject consol;
+    public GameObject kit;
+    public  LayerMask mask = 8;
 
     // Use this for initialization
     void Start()
@@ -33,26 +35,27 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
             if (!grabbed)
             {
                 Physics2D.queriesStartInColliders = false;
-                hit2 = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+                hit2 = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance, mask.value);
 
-                if (hit2.collider != null)
+                if (hit2.collider != null )
                 {
                     grabbed = true;
-
-
+                    GetComponent<Animator>().SetBool("carringStarFish", grabbed);
                 }
                 //grab
             }
-            else
+            else if(hit2.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
+                hit2.collider.gameObject.SetActive(true);
                 //throw
                 grabbed = false;
+                GetComponent<Animator>().SetBool("carringStarFish", grabbed);
 
 
-                if (hit2.collider.gameObject.GetComponent<Rigidbody2D>() != null && playerOnConsol == true)
+                if (playerOnConsol == true)
                 {
                     
-                    hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint.position);
+                    hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(otherConsolePoint1.position);
                     print("is trigger");
                 }
 
@@ -72,7 +75,7 @@ public class GrabberScriptPlayerTwo: MonoBehaviour
 
         if (grabbed)
         {
-            hit2.collider.gameObject.GetComponent<Rigidbody2D>().MovePosition(holdPoint.position);
+            hit2.collider.gameObject.SetActive(false);
             hit2.collider.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
 
 

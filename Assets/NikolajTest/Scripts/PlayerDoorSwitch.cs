@@ -20,7 +20,7 @@ public class PlayerDoorSwitch : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetButtonUp("Player2Inter1"))
+        if (Input.GetButtonUp($"Player{player}Inter1"))
         {
             buttonDown = false;
         }
@@ -38,7 +38,7 @@ public class PlayerDoorSwitch : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if ((Input.GetButtonDown($"Player{player}Inter1")))
+        if (other.gameObject.tag == "doorButton" + (lower ? "Lower" : "Upper") && (Input.GetButtonDown($"Player{player}Inter1")))
         {
             var s = other.gameObject.transform.GetComponentInChildren<DoorSwitch>();
             buttonDown = true;

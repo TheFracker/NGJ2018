@@ -8,6 +8,7 @@ TagManager:
   - Consol
   - Consol1
   - doorButtonUpper
+  - doorButtonLower
   layers:
   - Default
   - TransparentFX

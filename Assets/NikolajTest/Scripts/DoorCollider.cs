@@ -14,38 +14,22 @@ public class DoorCollider : MonoBehaviour
         set
         {
             _broken = value;
-            open = !value;
+            if (_broken)
+                _door.DoorClosed();
+            else
+                _door.DoorOpen();
         }
     }
-    public SpriteRenderer thisSpriteRenderer;
-    public Sprite doorOpen;
-    public Sprite doorClosed;
     private bool buttonDown;
     public float holdTime = 2f;
+    private Door _door;
 
     // Use this for initialization
     void Start()
     {
-        thisSpriteRenderer = GetComponent<SpriteRenderer>();
+        _door = GetComponentInParent<Door>();
         doorCollider = false;
-        open = true;
         broken = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!broken) return;
-
-        if (doorCollider && Input.GetButtonDown("Player1Inter1"))
-        {
-            buttonDown = true;
-            StartCoroutine(buttonDownTime(holdTime));
-        }
-        if (Input.GetButtonUp("Player1Inter1"))
-        {
-            buttonDown = false;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -67,22 +51,10 @@ public class DoorCollider : MonoBehaviour
         }
     }
 
-    IEnumerator buttonDownTime(float holdTime)
-    {
-        var startTime = Time.time;
-        while (buttonDown && Time.time - startTime < holdTime)
-        {
-            yield return null;
-        }
-        yield return null;
-        if (buttonDown && (Time.time - startTime >= holdTime))
-            open = true;
-    }
-
     IEnumerator CloseDoor(float openTime)
     {
         var startTime = Time.time;
         yield return new WaitForSeconds(openTime);
-        open = false;
+        _door.DoorClosed();
     }
 }
