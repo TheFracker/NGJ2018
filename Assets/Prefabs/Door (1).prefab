@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212535451058452262}
   - component: {fileID: 61060102131952026}
   - component: {fileID: 114579770583699210}
-  - component: {fileID: 95282915836377280}
+  - component: {fileID: 95856997287761148}
   m_Layer: 10
   m_Name: Door (1)
   m_TagString: door
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114116762675186436}
   m_Layer: 10
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ Transform:
   - {fileID: 4449953442511802}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4449953442511802
 Transform:
   m_ObjectHideFlags: 1
@@ -124,7 +124,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.4039366}
   m_EdgeRadius: 0
---- !u!95 &95282915836377280
+--- !u!95 &95856997287761148
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -133,7 +133,7 @@ Animator:
   m_GameObject: {fileID: 1896288762498070}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5c9caf570274600458821ed239f7788d, type: 2}
+  m_Controller: {fileID: 9100000, guid: c4d3a10619754f24bb0d6c33fb91ffff, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

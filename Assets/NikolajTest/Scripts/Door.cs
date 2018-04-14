@@ -32,6 +32,7 @@ public class Door : Repairable
 
     public void DoorOpen()
     {
+        print("Opening");
         anim.SetBool("DoorOpen", true);
         //thisSpriteRenderer.sprite = doorOpen;
         GetComponent<BoxCollider2D>().enabled = false;
@@ -42,7 +43,8 @@ public class Door : Repairable
 
     public void DoorClosed()
     {
-        anim.SetBool("DoorOpen", true);
+        print("Closing");
+        anim.SetBool("DoorOpen", false);
         //thisSpriteRenderer.sprite = doorClosed;
         GetComponent<BoxCollider2D>().enabled = true;
         

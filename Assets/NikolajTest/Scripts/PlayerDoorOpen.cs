@@ -19,12 +19,13 @@ public class PlayerDoorOpen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Player = transform.name.Remove(0, transform.name.Length - 1);
         _onCollider = false;
 
         oButton.enabled = false;
         progressBar.enabled = false;
 
-        Player = transform.name.Remove(0, transform.name.Length - 1);
+        
     }
 
     void Update()
@@ -49,7 +50,7 @@ public class PlayerDoorOpen : MonoBehaviour
         {
             var door = other.gameObject.transform.GetComponent<DoorCollider>();
             if (door == null) return;
-            oButton.enabled = door.Broken;
+            //oButton.enabled = door.Broken;
             if (Input.GetButtonDown($"Player{Player}Inter1"))
             {
                 var s = other.gameObject.transform.GetComponentInParent<Door>();

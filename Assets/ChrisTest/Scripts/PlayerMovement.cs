@@ -84,12 +84,12 @@ public class PlayerMovement : MonoBehaviour {
 
         }
 
-        while(_rb2D.velocity.x > 0.1 || _rb2D.velocity.x < - 0.1)
+        /*while(_rb2D.velocity.x > 0.1 || _rb2D.velocity.x < - 0.1)
         {
 
-            walkingSound();
+            //walkingSound();
 
-        }
+        }*/
 
         if ( moveHorizontal <0 && !_movingRight)
         {
