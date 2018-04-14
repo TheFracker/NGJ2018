@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerPlayerOne : MonoBehaviour {
+public class PlayerTwoMovement : MonoBehaviour {
+
     public float speed;             //Floating point variable to store the player's movement speed.
 
     private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
@@ -18,7 +19,7 @@ public class ControllerPlayerOne : MonoBehaviour {
     void FixedUpdate()
     {
         //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis ("HorizontalPlayer1");
+        float moveHorizontal = Input.GetAxis ("Horizontal2");
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = 0;
