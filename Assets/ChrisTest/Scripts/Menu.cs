@@ -1,9 +1,12 @@
+﻿
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour {
+
+public class Menu : MonoBehaviour
+{
 
     bool onStart;
     bool onQuit;
@@ -11,19 +14,24 @@ public class Menu : MonoBehaviour {
     bool something;
     public GameObject btnStart;
     public GameObject btnStartHover;
+    public GameObject btnStartPress;
     public GameObject btnQuit;
     public GameObject btnQuitHover;
+    public GameObject btnQuitPress;
 
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         btnQuitHover.SetActive(false);
         btnStartHover.SetActive(true);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+
+    void Update()
+    {
 
 
         if (Input.GetAxis("Vertical") < 0)
@@ -49,25 +57,37 @@ public class Menu : MonoBehaviour {
             btnQuit.SetActive(false);
 
             //print(Input.GetAxis("Vertical"));
+
         }
 
-        if(onStart && Input.GetButtonDown("Player1Inter1"))
+        if (onStart && Input.GetButtonDown("Player1Inter1"))
         {
-            print("Starting Final");
-            SceneManager.LoadScene("Christopher Scene");
+            btnStartPress.SetActive(true);
+            btnStartHover.SetActive(false);
+            Invoke("starting", 1);
+
+
+
         }
         if (onQuit && Input.GetButtonDown("Player1Inter1"))
         {
-            print("Quiting");
-            Application.Quit();
-            //SceneManager.LoadScene("Final");
+            btnQuitPress.SetActive(true);
+            btnQuitHover.SetActive(false);
+            Invoke("quitting", 1);
+
         }
 
+    }
 
+    void quitting()
+    {
+        print("Quiting");
+        Application.Quit();
+    }
 
-
-
-       
-		
-	}
+    void starting()
+    {
+        print("Starting Final");
+        // SceneManager.LoadScene("Scene"); //STARTING SCENE
+    }
 }
