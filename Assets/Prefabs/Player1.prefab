@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1084672455630850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.36, y: -0.57, z: 0}
   m_LocalScale: {x: 0.20193964, y: 0.20193964, z: 0.20193964}
   m_Children: []
   m_Father: {fileID: 0}
@@ -203,13 +203,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OtherConsolePoint: {fileID: 0}
-  Distance: 2
+  Distance: 0.25
   PlayerOnConsol: 0
   Consol: {fileID: 0}
   Kit: {fileID: 0}
   Mask:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 256
 --- !u!212 &212236477846937026
 SpriteRenderer:
   m_ObjectHideFlags: 1
