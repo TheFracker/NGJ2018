@@ -104,6 +104,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e6999dba0d0b73d42963dc59840c9755, type: 3}
   - {fileID: 8300000, guid: 40852e39a10406c4d8ad1f74323cc29f, type: 3}
   - {fileID: 8300000, guid: 88749df64f09e4146a57394cb348e363, type: 3}
+  repairSound: {fileID: 8300000, guid: 9dbb0ed5aea1042a5935cf8a320fc827, type: 3}
+  tempBool: 0
 --- !u!212 &212457348082200754
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -143,7 +145,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.4, y: 5}
+  m_Size: {x: 2.53, y: 2.73}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

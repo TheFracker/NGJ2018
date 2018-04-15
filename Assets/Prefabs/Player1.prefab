@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 70726072608331904}
   - component: {fileID: 114063685395590722}
   - component: {fileID: 114733567718554468}
+  - component: {fileID: 114458903687369402}
   m_Layer: 9
   m_Name: Player1
   m_TagString: Player
@@ -122,7 +123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1084672455630850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.42, y: -0.57, z: 0}
+  m_LocalPosition: {x: -4.36, y: -0.57, z: 0}
   m_LocalScale: {x: 0.20193964, y: 0.20193964, z: 0.20193964}
   m_Children:
   - {fileID: 224713460695746212}
@@ -356,8 +357,23 @@ MonoBehaviour:
   Mask:
     serializedVersion: 2
     m_Bits: 256
-  starFishPickUp: {fileID: 0}
-  starFishThrow: {fileID: 0}
+  starFishPickUp: {fileID: 8300000, guid: 9ffbf17b46f104c639a7f00a5c71d596, type: 3}
+  starFishThrow: {fileID: 8300000, guid: 9dbb0ed5aea1042a5935cf8a320fc827, type: 3}
+--- !u!114 &114458903687369402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084672455630850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf32ef81b258bc4c8f2efef6fd395ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldTime: 2
+  PlayerNumber: 
+  oButton: {fileID: 212441449160366280}
+  progressBar: {fileID: 114717529986964872}
 --- !u!114 &114717529986964872
 MonoBehaviour:
   m_ObjectHideFlags: 1

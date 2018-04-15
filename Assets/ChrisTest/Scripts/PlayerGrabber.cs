@@ -15,7 +15,6 @@ public class PlayerGrabber : MonoBehaviour
     public LayerMask Mask = 8;
     public int PlayerNumber { get; private set; }
     public AudioClip starFishPickUp;
-    public AudioClip starFishThrow;
     private List<AudioSource> _clips = new List<AudioSource>(2);
 
 
@@ -28,7 +27,6 @@ public class PlayerGrabber : MonoBehaviour
         }
 
         _clips[0].clip = starFishPickUp;
-        _clips[1].clip = starFishThrow;
     }
 
     // Update is called once per frame
@@ -73,7 +71,7 @@ public class PlayerGrabber : MonoBehaviour
                 {
                     _hit.collider.gameObject.SetActive(true);
                     _hit.collider.gameObject.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
-                    _clips[1].Play();
+                    _clips[0].Play();
                 }
 
                 _hit.collider.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;

@@ -620,44 +620,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 4075226865068038, guid: 4a38b87da8640c5429edb5bd4f1e756e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 212644411615080472, guid: 4a38b87da8640c5429edb5bd4f1e756e,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 11bb4dfe01622be4ba6280086dd29e57,
-        type: 3}
-    - target: {fileID: 212644411615080472, guid: 4a38b87da8640c5429edb5bd4f1e756e,
-        type: 2}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075226865068038, guid: 4a38b87da8640c5429edb5bd4f1e756e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 212053134154420098, guid: 4a38b87da8640c5429edb5bd4f1e756e,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212053134154420098, guid: 4a38b87da8640c5429edb5bd4f1e756e,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212053134154420098, guid: 4a38b87da8640c5429edb5bd4f1e756e,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 212053134154420098, guid: 4a38b87da8640c5429edb5bd4f1e756e,
         type: 2}
       propertyPath: m_Color.a
-      value: 0.466
+      value: 0.372
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a38b87da8640c5429edb5bd4f1e756e, type: 2}
@@ -700,10 +666,6 @@ Prefab:
     - target: {fileID: 4421101278538102, guid: 88640f37a75d3364fbf790a1f2669817, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1871868030508520, guid: 88640f37a75d3364fbf790a1f2669817, type: 2}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88640f37a75d3364fbf790a1f2669817, type: 2}
