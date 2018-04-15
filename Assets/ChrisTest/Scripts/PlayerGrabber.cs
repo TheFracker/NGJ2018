@@ -14,8 +14,8 @@ public class PlayerGrabber : MonoBehaviour
     public GameObject Kit;
     public LayerMask Mask = 8;
     public int PlayerNumber { get; private set; }
-    public AudioClip StarFishPickUp;
-    public AudioClip StarFishThrow;
+    public AudioClip starFishPickUp;
+
     private List<AudioSource> _clips = new List<AudioSource>(2);
     public SpriteRenderer xButton;
 
@@ -28,8 +28,9 @@ public class PlayerGrabber : MonoBehaviour
             _clips.Add(gameObject.AddComponent<AudioSource>());
         }
 
-        _clips[0].clip = StarFishPickUp;
-        _clips[1].clip = StarFishThrow;
+
+        _clips[0].clip = starFishPickUp;
+
 
         print(xButton == null);
         if (xButton != null)
@@ -88,7 +89,7 @@ public class PlayerGrabber : MonoBehaviour
                 {
                     _hit.collider.gameObject.SetActive(true);
                     _hit.collider.gameObject.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
-                    _clips[1].Play();
+                    _clips[0].Play();
                 }
 
                 _hit.collider.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;

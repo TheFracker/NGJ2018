@@ -24,8 +24,9 @@ public class DoorCollider : MonoBehaviour
     private Door _door;
 
     // Use this for initialization
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
         _door = GetComponentInParent<Door>();
         Broken = false;
     }

@@ -10,6 +10,9 @@ public class HoleScript : Repairable
     AudioSource runningWaterAudio;
     [SerializeField]
     List<AudioClip> runningWaterSounds;
+    AudioSource repairAudio;
+    [SerializeField]
+    AudioClip repairSound;
 
     Animator anim;
     [SerializeField]
@@ -21,28 +24,28 @@ public class HoleScript : Repairable
     {
         anim = this.gameObject.GetComponent<Animator>();
         breakingAudio = gameObject.AddComponent<AudioSource>();
+        breakingAudio.playOnAwake = false;
         runningWaterAudio = gameObject.AddComponent<AudioSource>();
+        runningWaterAudio.playOnAwake = false;
+        repairAudio = gameObject.AddComponent<AudioSource>();
+        repairAudio.playOnAwake = false;
 
         breakingAudio.clip = breakingSounds[Random.Range(0, breakingSounds.Count)];
         breakingAudio.PlayOneShot(breakingAudio.clip);
 
         runningWaterAudio.clip = runningWaterSounds[Random.Range(0, runningWaterSounds.Count)];
-        print(runningWaterAudio.clip);
         runningWaterAudio.PlayDelayed(0.5f);
     }
 
-    private void Update()
-    {
-        if(HoleFixed == true)
-        {
-            HoleRepaird();
-        }
-    }
+   
 
     public void HoleRepaird()
     {
         HoleFixed = true;
         anim.SetBool("HoleFixed", HoleFixed);
+        runningWaterAudio.Stop();
+        repairAudio.clip = repairSound;
+        repairAudio.PlayOneShot(repairAudio.clip);
         StartCoroutine("Fade");
     }
 
