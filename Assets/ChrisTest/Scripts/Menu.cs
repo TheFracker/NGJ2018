@@ -19,7 +19,6 @@ public class Menu : MonoBehaviour
     private float startTime;
 
     public Image blackScreen;
-    public Image closedScreen;
     public GameObject btnStart;
     public GameObject btnStartHover;
     public GameObject btnStartPress;
@@ -44,7 +43,6 @@ public class Menu : MonoBehaviour
     void Start()
     {
         blackScreen.canvasRenderer.SetAlpha(0);
-        closedScreen.canvasRenderer.SetAlpha(0);
         btnQuitHover.SetActive(false);
         btnStartHover.SetActive(true);
         btnStartPress.SetActive(false);
@@ -138,12 +136,7 @@ public class Menu : MonoBehaviour
         introSound.Play();
         print("Starting Final");
         blackScreen.CrossFadeAlpha(1, 2, true);
-        Invoke("changeImage", 6);
         Invoke("changeScene", 8);
-    }
-    void changeImage()
-    {
-        closedScreen.CrossFadeAlpha(1, 2, true);
     }
     void changeScene()
     {
