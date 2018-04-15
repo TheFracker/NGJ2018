@@ -28,6 +28,7 @@ public class Door : Repairable
         doorOpenAudio = gameObject.AddComponent<AudioSource>();
 
         anim = this.gameObject.GetComponent<Animator>();
+        DoorOpen();
     }
 
     public void DoorOpen()
