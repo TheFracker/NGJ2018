@@ -3,15 +3,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class Menu : MonoBehaviour
 {
 
-    bool onStart;
+    bool onStart = true;
     bool onQuit;
-    bool gameStarting;
-    bool something;
+    public float minimum = 0.0f;
+    public float maximum = 1f;
+    public float duration = 5.0f;
+
+
+    private float startTime;
+
+    public Image blackScreen;
     public GameObject btnStart;
     public GameObject btnStartHover;
     public GameObject btnStartPress;
@@ -19,6 +26,8 @@ public class Menu : MonoBehaviour
     public GameObject btnQuitHover;
     public GameObject btnQuitPress;
     private List<AudioSource> _clips = new List<AudioSource>(6);
+    public AudioSource bgMusic;
+    public AudioSource introSound;
     private int __clipNumber;
     private int _clipNumber { get { return __clipNumber; } set { __clipNumber = value % 6; }}
 
@@ -28,16 +37,17 @@ public class Menu : MonoBehaviour
     public AudioClip clip4;
     public AudioClip clip5;
     public AudioClip clip6;
+   
 
     // Use this for initialization
     void Start()
     {
+        blackScreen.canvasRenderer.SetAlpha(0);
         btnQuitHover.SetActive(false);
         btnStartHover.SetActive(true);
         btnStartPress.SetActive(false);
         btnQuitPress.SetActive(false);
-
-
+       
         for (int i = 0; i < 6; i++)
         {
             _clips.Add(gameObject.AddComponent<AudioSource>());
@@ -55,15 +65,14 @@ public class Menu : MonoBehaviour
 
         _clipNumber = 0;
 
-
-     
+        bgMusic.Play();
     }
 
     // Update is called once per frame
 
     void Update()
     {
-
+        
 
         if (Input.GetAxis("Vertical") < 0 && onStart == false)
         {
@@ -101,6 +110,7 @@ public class Menu : MonoBehaviour
             btnStartPress.SetActive(true);
             btnStartHover.SetActive(false);
             Invoke("starting", 1);
+            bgMusic.Stop();
 
 
 
@@ -123,7 +133,13 @@ public class Menu : MonoBehaviour
 
     void starting()
     {
+        introSound.Play();
         print("Starting Final");
+        blackScreen.CrossFadeAlpha(1, 2, true);
+        Invoke("changeScene", 8);
+    }
+    void changeScene()
+    {
         SceneManager.LoadScene("Christopher Scene"); //STARTING SCENE
     }
 }
