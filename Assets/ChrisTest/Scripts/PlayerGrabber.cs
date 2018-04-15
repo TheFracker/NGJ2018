@@ -29,10 +29,8 @@ public class PlayerGrabber : MonoBehaviour
             _clips.Add(gameObject.AddComponent<AudioSource>());
         }
 
-
         _clips[0].clip = starFishPickUp;
         _clips[1].clip = sendStarFish;
-
 
         print(xButton == null);
         if (xButton != null)
@@ -51,18 +49,21 @@ public class PlayerGrabber : MonoBehaviour
                 _hit = Physics2D.Raycast(new Vector2(transform.position.x - Distance, transform.position.y),
                     transform.position, Distance, Mask.value);
             }
+
+
+            if (_hit.collider != null && !Grabbed)
+            {
+                if (xButton != null)
+                    xButton.enabled = true;
+            }
+            else
+            {
+                if (xButton != null)
+                    xButton.enabled = false;
+            }
         }
 
-        if (_hit.collider != null && !Grabbed)
-        {
-            if (xButton != null)
-                xButton.enabled = true;
-        }
-        else
-        {
-            if (xButton != null)
-                xButton.enabled = false;
-        }
+        if (Grabbed && !PlayerOnConsol) xButton.enabled = false;
 
         if (Input.GetButtonDown($"Player{PlayerNumber}Inter1"))
         {
@@ -114,7 +115,6 @@ public class PlayerGrabber : MonoBehaviour
             if (xButton != null)
             {
                 xButton.enabled = Grabbed;
-                
             }
         }
     }
