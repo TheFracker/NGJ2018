@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MEC;
-using UnityEditor;
 
 public abstract class Repairable : MonoBehaviour, IRepairProgress
 {
@@ -10,14 +9,14 @@ public abstract class Repairable : MonoBehaviour, IRepairProgress
 
     public string Repair(float timeToRepair)
     {
-        var tag = GUID.Generate().ToString();
+        var tag = Guid.NewGuid().ToString();
         Timing.RunCoroutine(RepairRoutine(timeToRepair), tag);
         return tag;
     }
 
     public string Repair(float timeToRepair, Action callback)
     {
-        var tag = GUID.Generate().ToString();
+        var tag = Guid.NewGuid().ToString();
         Timing.RunCoroutine(RepairRoutine(timeToRepair, callback), tag);
         return tag;
     }
