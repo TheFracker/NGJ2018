@@ -358,7 +358,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   starFishPickUp: {fileID: 8300000, guid: 9ffbf17b46f104c639a7f00a5c71d596, type: 3}
-  starFishThrow: {fileID: 8300000, guid: 9dbb0ed5aea1042a5935cf8a320fc827, type: 3}
+  xButton: {fileID: 212108629978434768}
 --- !u!114 &114458903687369402
 MonoBehaviour:
   m_ObjectHideFlags: 1
