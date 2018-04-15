@@ -13,7 +13,9 @@ public class HoleScript : Repairable
     List<AudioClip> runningWaterSounds;
 
     Animator anim;
-    public bool HoleFixed { get; private set; }
+    [SerializeField]
+    bool tempBool;
+    public bool HoleFixed { get { return tempBool; } private set { tempBool = value; } }
 
     // Use this for initialization
     void Start()
@@ -30,8 +32,31 @@ public class HoleScript : Repairable
         runningWaterAudio.PlayDelayed(0.5f);
     }
 
+    private void Update()
+    {
+        if(HoleFixed == true)
+        {
+            HoleRepaird();
+        }
+    }
+
     public void HoleRepaird()
     {
         anim.SetBool("HoleFixed", HoleFixed);
+        StartCoroutine("Fade");
+    }
+
+    IEnumerator Fade()
+    {
+
+
+        var sr = GetComponent<SpriteRenderer>();
+        for (float f = 1f; f >= 0.2; f -= 0.1f*Time.deltaTime)
+        {
+            
+            sr.color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.b, f);
+            yield return null;
+        }
+        Destroy(this.gameObject,1);
     }
 }
