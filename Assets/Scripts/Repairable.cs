@@ -5,6 +5,8 @@ using MEC;
 
 public abstract class Repairable : MonoBehaviour, IRepairProgress
 {
+
+
     public float Progress { get; private set; }
 
     public string Repair(float timeToRepair, bool repair = true)

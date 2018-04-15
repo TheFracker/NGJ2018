@@ -97,13 +97,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakingSounds:
-  - {fileID: 8300000, guid: c299a5d3e3c9f5b4e8975e646735bed7, type: 3}
-  - {fileID: 8300000, guid: 23d48657ea8fb7e40af520e0881d462d, type: 3}
-  - {fileID: 8300000, guid: 1c51533b54914884f8e5eedcaafeb49d, type: 3}
+  - {fileID: 8300000, guid: 61d6679abf7aa3c4eb792dc80a757cd7, type: 3}
+  - {fileID: 8300000, guid: 596395101d9e5c042884664a4c1f7d50, type: 3}
+  - {fileID: 8300000, guid: 596395101d9e5c042884664a4c1f7d50, type: 3}
   runningWaterSounds:
-  - {fileID: 8300000, guid: e6999dba0d0b73d42963dc59840c9755, type: 3}
-  - {fileID: 8300000, guid: 40852e39a10406c4d8ad1f74323cc29f, type: 3}
-  - {fileID: 8300000, guid: 88749df64f09e4146a57394cb348e363, type: 3}
+  - {fileID: 8300000, guid: a813a0d0aa6c5f445b4a14ab644ab677, type: 3}
+  - {fileID: 8300000, guid: a813a0d0aa6c5f445b4a14ab644ab677, type: 3}
+  - {fileID: 8300000, guid: b3ab5d10d5a286041aa63b86222884b1, type: 3}
   repairSound: {fileID: 8300000, guid: 9dbb0ed5aea1042a5935cf8a320fc827, type: 3}
   tempBool: 0
 --- !u!212 &212457348082200754

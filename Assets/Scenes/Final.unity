@@ -127,7 +127,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 26f6f35a40bd6ab40a221f7477fef702, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8b69a3ea60fa4cf49b235f127c4e646a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -502,7 +502,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1509950486933630, guid: 5af4bc2b534cd684a86b5fcc1ed0396e,
     type: 2}
   m_PrefabInternal: {fileID: 1704310557}
---- !u!82 &1118793809
+--- !u!82 &1118793814
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -511,7 +511,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 26f6f35a40bd6ab40a221f7477fef702, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8b69a3ea60fa4cf49b235f127c4e646a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2331,36 +2331,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114573423773969210, guid: 88640f37a75d3364fbf790a1f2669817,
-        type: 2}
-      propertyPath: runningWaterSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: a813a0d0aa6c5f445b4a14ab644ab677, type: 3}
-    - target: {fileID: 114573423773969210, guid: 88640f37a75d3364fbf790a1f2669817,
-        type: 2}
-      propertyPath: runningWaterSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: a813a0d0aa6c5f445b4a14ab644ab677, type: 3}
-    - target: {fileID: 114573423773969210, guid: 88640f37a75d3364fbf790a1f2669817,
-        type: 2}
-      propertyPath: runningWaterSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: b3ab5d10d5a286041aa63b86222884b1, type: 3}
-    - target: {fileID: 114573423773969210, guid: 88640f37a75d3364fbf790a1f2669817,
-        type: 2}
-      propertyPath: breakingSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 61d6679abf7aa3c4eb792dc80a757cd7, type: 3}
-    - target: {fileID: 114573423773969210, guid: 88640f37a75d3364fbf790a1f2669817,
-        type: 2}
-      propertyPath: breakingSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 596395101d9e5c042884664a4c1f7d50, type: 3}
-    - target: {fileID: 114573423773969210, guid: 88640f37a75d3364fbf790a1f2669817,
-        type: 2}
-      propertyPath: breakingSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 596395101d9e5c042884664a4c1f7d50, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88640f37a75d3364fbf790a1f2669817, type: 2}
   m_IsPrefabParent: 0
