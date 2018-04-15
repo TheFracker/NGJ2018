@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoleScript : MonoBehaviour {
+public class HoleScript : Repairable
+{
 
     AudioSource breakingAudio;
     [SerializeField]
@@ -12,13 +13,11 @@ public class HoleScript : MonoBehaviour {
     List<AudioClip> runningWaterSounds;
 
     Animator anim;
-    [SerializeField]
-    bool holeFixed;
-
+    public bool HoleFixed { get; private set; }
 
     // Use this for initialization
-    void Start() {
-
+    void Start()
+    {
         anim = this.gameObject.GetComponent<Animator>();
         breakingAudio = gameObject.AddComponent<AudioSource>();
         runningWaterAudio = gameObject.AddComponent<AudioSource>();
@@ -29,18 +28,10 @@ public class HoleScript : MonoBehaviour {
         runningWaterAudio.clip = runningWaterSounds[Random.Range(0, runningWaterSounds.Count)];
         print(runningWaterAudio.clip);
         runningWaterAudio.PlayDelayed(0.5f);
-
-        
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
 
-	}
-
-    void HoleRepaird()
+    public void HoleRepaird()
     {
-        anim.SetBool("HoleFixed", holeFixed);
+        anim.SetBool("HoleFixed", HoleFixed);
     }
 }

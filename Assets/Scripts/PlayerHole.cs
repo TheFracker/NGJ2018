@@ -1,17 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
 using MEC;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerDoorOpen : MonoBehaviour
+public class PlayerHole : MonoBehaviour
 {
     private bool _onCollider;
     private bool _buttonDown;
     public float HoldTime = 2f;
     public string Player;
-    private string _tag = "door";
+    private string _tag = "hole";
 
     public SpriteRenderer oButton;
     public Image progressBar;
@@ -19,18 +19,17 @@ public class PlayerDoorOpen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Player = transform.name.Remove(0, transform.name.Length - 1);
         _onCollider = false;
 
         oButton.enabled = false;
         progressBar.enabled = false;
 
-        
+        Player = transform.name.Remove(0, transform.name.Length - 1);
     }
 
     void Update()
     {
-        if (Input.GetButtonUp($"Player{Player}Inter1"))
+        if (Input.GetButtonUp($"Player{Player}Inter2"))
         {
             _buttonDown = false;
         }
@@ -38,7 +37,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "door")
+        if (other.gameObject.tag == _tag)
         {
             _onCollider = true;
         }
@@ -46,24 +45,22 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "door")
+        if (other.gameObject.tag == _tag)
         {
-            var door = other.gameObject.transform.GetComponent<DoorCollider>();
-            if (door == null) return;
-            //oButton.enabled = door.Broken;
-            if (Input.GetButtonDown($"Player{Player}Inter1"))
+            var hole = other.gameObject.transform.GetComponent<HoleScript>();
+            if (hole == null) return;
+            oButton.enabled = !hole.HoleFixed;
+            if (Input.GetButtonDown($"Player{Player}Inter2"))
             {
-                var s = other.gameObject.transform.GetComponentInParent<Door>();
-                if (s == null) return;
                 _buttonDown = true;
-                StartCoroutine(ButtonDownTime(HoldTime, (f, c) => s.Repair(f, c), s.DoorOpen, s));
+                StartCoroutine(ButtonDownTime(HoldTime, (f, c) => hole.Repair(f, c), hole.HoleRepaird, hole));
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "door")
+        if (other.gameObject.tag == _tag)
         {
             _onCollider = false;
             oButton.enabled = false;

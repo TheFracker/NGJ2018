@@ -17,6 +17,8 @@ public class Door : Repairable
     [SerializeField]
     List<AudioClip> closeAudio;
 
+    Animator anim;
+
     // Use this for initialization
     void Start()
     {
@@ -24,11 +26,15 @@ public class Door : Repairable
 
         doorCloseAudio = gameObject.AddComponent<AudioSource>();
         doorOpenAudio = gameObject.AddComponent<AudioSource>();
+
+        anim = this.gameObject.GetComponent<Animator>();
     }
 
     public void DoorOpen()
     {
-        thisSpriteRenderer.sprite = doorOpen;
+        print("Opening");
+        anim.SetBool("DoorOpen", true);
+        //thisSpriteRenderer.sprite = doorOpen;
         GetComponent<BoxCollider2D>().enabled = false;
        
         doorOpenAudio.clip = openAudio[Random.Range(0, openAudio.Count)];
@@ -37,7 +43,9 @@ public class Door : Repairable
 
     public void DoorClosed()
     {
-        thisSpriteRenderer.sprite = doorClosed;
+        print("Closing");
+        anim.SetBool("DoorOpen", false);
+        //thisSpriteRenderer.sprite = doorClosed;
         GetComponent<BoxCollider2D>().enabled = true;
         
         doorCloseAudio.clip = closeAudio[Random.Range(0, closeAudio.Count)];
