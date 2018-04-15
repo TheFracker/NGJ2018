@@ -14,6 +14,7 @@ public class PlayerDoorSwitch : MonoBehaviour
     private string _tag;
 
     public SpriteRenderer oButton;
+    public SpriteRenderer xButton;
     public Image progressBar;
 
     // Use this for initialization
@@ -23,6 +24,7 @@ public class PlayerDoorSwitch : MonoBehaviour
         _tag = "doorButton" + (Lower ? "Lower" : "Upper");
 
         oButton.enabled = false;
+        xButton.enabled = false;
         progressBar.enabled = false;
     }
 
@@ -50,7 +52,7 @@ public class PlayerDoorSwitch : MonoBehaviour
             var s = other.gameObject.transform.GetComponentInChildren<DoorSwitch>();
             if (s == null) return;
             oButton.enabled = s.DoorsBroken;
-            if (Input.GetButtonDown($"Player{Player}Inter1"))
+            if (Input.GetButtonDown($"Player{Player}Inter2"))
             {
                 _buttonDown = true;
                 StartCoroutine(ButtonDownTime(HoldTime, (f, c) => s.Repair(f, c), s.DoorRepair, s));

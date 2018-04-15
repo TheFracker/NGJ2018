@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 95016423984157228}
   - component: {fileID: 82731356277867840}
   - component: {fileID: 70726072608331904}
+  - component: {fileID: 114063685395590722}
+  - component: {fileID: 114733567718554468}
   m_Layer: 9
   m_Name: Player1
   m_TagString: Player
@@ -120,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1084672455630850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.27, y: -3.11, z: 0}
+  m_LocalPosition: {x: -4.42, y: -0.57, z: 0}
   m_LocalScale: {x: 0.20193964, y: 0.20193964, z: 0.20193964}
   m_Children:
   - {fileID: 224713460695746212}
@@ -272,6 +274,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114063685395590722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084672455630850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad79ad4d3db96be46b4e0ef7b87b32c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldTime: 2
+  Player: 
+  oButton: {fileID: 212441449160366280}
+  xButton: {fileID: 212108629978434768}
+  progressBar: {fileID: 114717529986964872}
 --- !u!114 &114138411618811744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,6 +324,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 20
   maxSpeed: 5
+  clip1: {fileID: 0}
+  clip2: {fileID: 0}
+  clip3: {fileID: 0}
+  clip4: {fileID: 0}
+  clip5: {fileID: 0}
+  clip6: {fileID: 0}
+  clip7: {fileID: 0}
+  clip8: {fileID: 0}
+  clip9: {fileID: 0}
+  clip10: {fileID: 0}
+  clip11: {fileID: 0}
+  clip12: {fileID: 0}
+  clip13: {fileID: 0}
 --- !u!114 &114323627638883840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,6 +356,8 @@ MonoBehaviour:
   Mask:
     serializedVersion: 2
     m_Bits: 256
+  starFishPickUp: {fileID: 0}
+  starFishThrow: {fileID: 0}
 --- !u!114 &114717529986964872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,6 +385,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 0
   m_FillOrigin: 3
+--- !u!114 &114733567718554468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084672455630850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5912b5a88f5e477419f455e9afb29352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldTime: 2
+  Lower: 0
+  Player: 
+  oButton: {fileID: 212441449160366280}
+  xButton: {fileID: 212108629978434768}
+  progressBar: {fileID: 114717529986964872}
 --- !u!114 &114737665454188368
 MonoBehaviour:
   m_ObjectHideFlags: 1
