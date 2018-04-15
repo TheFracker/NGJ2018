@@ -26,6 +26,7 @@ public class DoorSwitch : Repairable, IBreakable
         foreach (var door in Doors)
         {
             door.Broken = true;
+            anim.SetBool("Broken", true);
         }
         DoorsBroken = true;
         
@@ -36,6 +37,7 @@ public class DoorSwitch : Repairable, IBreakable
         foreach (var door in Doors)
         {
             door.Broken = false;
+            anim.SetBool("Broken", false);
         }
         DoorsBroken = false;
         anim.StopPlayback();
