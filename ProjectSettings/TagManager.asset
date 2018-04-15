@@ -13,6 +13,7 @@ TagManager:
   - door
   - doorButton
   - hole
+  - Fish
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - StarFishKit
   - Player
   - Enviroment
-  - 
+  - Gauge
   - 
   - 
   - 
@@ -62,6 +63,9 @@ TagManager:
   - name: FG
     uniqueID: 1881692057
     locked: 0
-  - name: New Layer
+  - name: Gauge
     uniqueID: 2695326855
+    locked: 0
+  - name: uberfront
+    uniqueID: 991207879
     locked: 0

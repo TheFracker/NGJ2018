@@ -140,6 +140,6 @@ public class Menu : MonoBehaviour
     }
     void changeScene()
     {
-        SceneManager.LoadScene("Final 2"); //STARTING SCENE
+        SceneManager.LoadScene("Final"); //STARTING SCENE
     }
 }

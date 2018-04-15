@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gaugePin : MonoBehaviour
 {
     private float rotation;
     private float prevRot;
     private float maxRotation = -240;
+    
+    bool end = false;
 
 
     // Use this for initialization
     void Start()
     {
+ 
         prevRot = 0;
         rotation = 0;
   
@@ -28,5 +32,13 @@ public class gaugePin : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.M))
             Locator.GetGauge().Add();
+
+        if (!end && Locator.GetGauge().FailureCounter == Locator.GetGauge().MaxFailures)
+        {
+            end = true;
+
+            SceneManager.LoadScene("GameOver");
+
+        }
     }
 }
