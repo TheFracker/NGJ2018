@@ -15,6 +15,7 @@ public class PlayerGrabber : MonoBehaviour
     public LayerMask Mask = 8;
     public int PlayerNumber { get; private set; }
     public AudioClip starFishPickUp;
+    public AudioClip sendStarFish;
 
     private List<AudioSource> _clips = new List<AudioSource>(2);
     public SpriteRenderer xButton;
@@ -28,9 +29,8 @@ public class PlayerGrabber : MonoBehaviour
             _clips.Add(gameObject.AddComponent<AudioSource>());
         }
 
-
         _clips[0].clip = starFishPickUp;
-
+        _clips[1].clip = sendStarFish;
 
         print(xButton == null);
         if (xButton != null)
@@ -49,18 +49,21 @@ public class PlayerGrabber : MonoBehaviour
                 _hit = Physics2D.Raycast(new Vector2(transform.position.x - Distance, transform.position.y),
                     transform.position, Distance, Mask.value);
             }
+
+
+            if (_hit.collider != null && !Grabbed)
+            {
+                if (xButton != null)
+                    xButton.enabled = true;
+            }
+            else
+            {
+                if (xButton != null)
+                    xButton.enabled = false;
+            }
         }
 
-        if (_hit.collider != null && !Grabbed)
-        {
-            if (xButton != null)
-                xButton.enabled = true;
-        }
-        else
-        {
-            if (xButton != null)
-                xButton.enabled = false;
-        }
+        if (Grabbed && !PlayerOnConsol) xButton.enabled = false;
 
         if (Input.GetButtonDown($"Player{PlayerNumber}Inter1"))
         {
@@ -83,6 +86,7 @@ public class PlayerGrabber : MonoBehaviour
                 if (PlayerOnConsol)
                 {
                     _hit.collider.gameObject.SetActive(true);
+                    _clips[1].Play();
                     _hit.collider.gameObject.transform.position = new Vector2(OtherConsolePoint.position.x, OtherConsolePoint.position.y);
                 }
                 else
@@ -108,7 +112,10 @@ public class PlayerGrabber : MonoBehaviour
         if (other.gameObject == Consol)
         {
             PlayerOnConsol = true;
-            if (xButton != null) xButton.enabled = Grabbed;
+            if (xButton != null)
+            {
+                xButton.enabled = Grabbed;
+            }
         }
     }
 
