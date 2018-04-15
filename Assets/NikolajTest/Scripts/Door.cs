@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Door : Repairable
@@ -28,6 +29,7 @@ public class Door : Repairable
         doorOpenAudio = gameObject.AddComponent<AudioSource>();
 
         anim = this.gameObject.GetComponent<Animator>();
+        DoorOpen();
     }
 
     public void DoorOpen()
@@ -36,9 +38,12 @@ public class Door : Repairable
         anim.SetBool("DoorOpen", true);
         //thisSpriteRenderer.sprite = doorOpen;
         GetComponent<BoxCollider2D>().enabled = false;
-       
-        doorOpenAudio.clip = openAudio[Random.Range(0, openAudio.Count)];
-        doorOpenAudio.PlayOneShot(doorOpenAudio.clip);
+
+        if (openAudio != null && openAudio.Any())
+        {
+            doorOpenAudio.clip = openAudio[Random.Range(0, openAudio.Count)];
+            doorOpenAudio.PlayOneShot(doorOpenAudio.clip);
+        }
     }
 
     public void DoorClosed()
@@ -47,9 +52,11 @@ public class Door : Repairable
         anim.SetBool("DoorOpen", false);
         //thisSpriteRenderer.sprite = doorClosed;
         GetComponent<BoxCollider2D>().enabled = true;
-        
-        doorCloseAudio.clip = closeAudio[Random.Range(0, closeAudio.Count)];
-        print(doorCloseAudio.clip);
-        doorCloseAudio.PlayOneShot(doorOpenAudio.clip);
+
+        if (closeAudio != null && closeAudio.Any())
+        {
+            doorCloseAudio.clip = closeAudio[Random.Range(0, closeAudio.Count)];
+            doorCloseAudio.PlayOneShot(doorOpenAudio.clip);
+        }
     }
 }
