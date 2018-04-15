@@ -168,8 +168,14 @@ MonoBehaviour:
   thisSpriteRenderer: {fileID: 212535451058452262}
   doorOpen: {fileID: 21300000, guid: 79f5356304543af41917825bbe0c177d, type: 3}
   doorClosed: {fileID: 21300000, guid: 9a26196e287fc854cb18d7cc6c55319d, type: 3}
-  openAudio: []
-  closeAudio: []
+  openAudio:
+  - {fileID: 8300000, guid: 791147d55ce942c459b6943564eea7c1, type: 3}
+  - {fileID: 8300000, guid: 9c636d8d95fa630428aab9b968c74c3d, type: 3}
+  - {fileID: 8300000, guid: e04a8f3a0d33d4e4289dd9c7a29062bb, type: 3}
+  closeAudio:
+  - {fileID: 8300000, guid: 8a54fb7bb12e3244e988307c3c8e6bbe, type: 3}
+  - {fileID: 8300000, guid: bb207ed9e631eb84996475f18e67ef78, type: 3}
+  - {fileID: 8300000, guid: 6893db19c9b9c5740a0545cb46d8c941, type: 3}
 --- !u!212 &212535451058452262
 SpriteRenderer:
   m_ObjectHideFlags: 1
