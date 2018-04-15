@@ -14,6 +14,7 @@ public class PlayerDoorOpen : MonoBehaviour
     private string _tag = "door";
 
     public SpriteRenderer oButton;
+    public SpriteRenderer xButton;
     public Image progressBar;
 
     // Use this for initialization
@@ -24,6 +25,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
         oButton.enabled = false;
         progressBar.enabled = false;
+        xButton.enabled = false;
 
         
     }
@@ -50,8 +52,8 @@ public class PlayerDoorOpen : MonoBehaviour
         {
             var door = other.gameObject.transform.GetComponent<DoorCollider>();
             if (door == null) return;
-            //oButton.enabled = door.Broken;
-            if (Input.GetButtonDown($"Player{Player}Inter1"))
+            oButton.enabled = door.Broken;
+            if (Input.GetButtonDown($"Player{Player}Inter2"))
             {
                 var s = other.gameObject.transform.GetComponentInParent<Door>();
                 if (s == null) return;
