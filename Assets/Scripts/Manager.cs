@@ -22,10 +22,7 @@ public class Manager : MonoBehaviour {
 
     private void Awake()
     {
-        foreach (GameObject item in GameObject.FindGameObjectsWithTag("ThingsThatBreakStuff"))
-        {
-            thingsThatBreakStuff.Add(item);
-        }
+
     }
 
 

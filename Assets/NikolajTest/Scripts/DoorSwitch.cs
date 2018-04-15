@@ -27,6 +27,7 @@ public class DoorSwitch : Repairable, IBreakable
         {
             door.Broken = true;
             anim.SetBool("Broken", true);
+            this.GetComponent<AudioSource>().Play();
         }
         DoorsBroken = true;
         
@@ -38,6 +39,7 @@ public class DoorSwitch : Repairable, IBreakable
         {
             door.Broken = false;
             anim.SetBool("Broken", false);
+            this.GetComponent<AudioSource>().Stop();
         }
         DoorsBroken = false;
         anim.StopPlayback();

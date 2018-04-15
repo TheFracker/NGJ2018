@@ -14,9 +14,7 @@ public class gaugePin : MonoBehaviour
     {
         prevRot = 0;
         rotation = 0;
-        Locator.GetGauge().Add();
-        Locator.GetGauge().Add();
-        Locator.GetGauge().Add();
+  
     }
 
     // Update is called once per frame
