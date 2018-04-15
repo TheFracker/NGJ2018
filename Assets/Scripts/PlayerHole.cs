@@ -41,6 +41,7 @@ public class PlayerHole : MonoBehaviour
     {
         if (other.gameObject.tag == _tag)
         {
+            print("enter");
             _onCollider = true;
         }
     }
@@ -49,8 +50,10 @@ public class PlayerHole : MonoBehaviour
     {
         if (other.gameObject.tag == _tag)
         {
+            print("staying");
             var hole = other.gameObject.GetComponent<HoleScript>();
             if (hole == null && !_grabber.Grabbed) return;
+            print("Should press");
             oButton.enabled = !hole.HoleFixed;
             if (Input.GetButtonDown($"Player{PlayerNumber}Inter2"))
             {

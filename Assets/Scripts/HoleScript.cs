@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HoleScript : Repairable
 {
-
     AudioSource breakingAudio;
     [SerializeField]
     List<AudioClip> breakingSounds;
@@ -32,6 +31,7 @@ public class HoleScript : Repairable
 
     public void HoleRepaird()
     {
+        HoleFixed = true;
         anim.SetBool("HoleFixed", HoleFixed);
     }
 }
