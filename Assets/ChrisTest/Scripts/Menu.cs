@@ -147,6 +147,6 @@ public class Menu : MonoBehaviour
     }
     void changeScene()
     {
-        SceneManager.LoadScene("Christopher Scene"); //STARTING SCENE
+        SceneManager.LoadScene("Final 2"); //STARTING SCENE
     }
 }
