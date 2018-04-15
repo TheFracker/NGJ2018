@@ -1,6 +1,8 @@
 ﻿public class Gauge : IGauge
 {
     public int FailureCounter { get; private set; } = 0;
+    public float FailurePercentage => FailureCounter / (float)_maxFailures;
+    public int MaxFailures => _maxFailures;
 
     public bool Warning => FailureCounter >= _maxFailures - _fromMaxFailures;
 
