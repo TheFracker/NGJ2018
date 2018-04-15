@@ -34,7 +34,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonUp($"Player{Player}Inter1"))
+        if (Input.GetButtonUp($"Player{Player}Inter2"))
         {
             _buttonDown = false;
         }
