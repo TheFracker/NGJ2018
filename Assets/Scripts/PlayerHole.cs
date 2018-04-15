@@ -10,8 +10,9 @@ public class PlayerHole : MonoBehaviour
     private bool _onCollider;
     private bool _buttonDown;
     public float HoldTime = 2f;
-    public string Player;
+    public string PlayerNumber;
     private string _tag = "hole";
+    private PlayerGrabber _grabber;
 
     public SpriteRenderer oButton;
     public Image progressBar;
@@ -23,13 +24,14 @@ public class PlayerHole : MonoBehaviour
 
         oButton.enabled = false;
         progressBar.enabled = false;
+        _grabber = GetComponent<PlayerGrabber>();
 
-        Player = transform.name.Remove(0, transform.name.Length - 1);
+        PlayerNumber = transform.name.Remove(0, transform.name.Length - 1);
     }
 
     void Update()
     {
-        if (Input.GetButtonUp($"Player{Player}Inter2"))
+        if (Input.GetButtonUp($"Player{PlayerNumber}Inter2"))
         {
             _buttonDown = false;
         }
@@ -47,10 +49,10 @@ public class PlayerHole : MonoBehaviour
     {
         if (other.gameObject.tag == _tag)
         {
-            var hole = other.gameObject.transform.GetComponent<HoleScript>();
-            if (hole == null) return;
+            var hole = other.gameObject.GetComponent<HoleScript>();
+            if (hole == null && !_grabber.Grabbed) return;
             oButton.enabled = !hole.HoleFixed;
-            if (Input.GetButtonDown($"Player{Player}Inter2"))
+            if (Input.GetButtonDown($"Player{PlayerNumber}Inter2"))
             {
                 _buttonDown = true;
                 StartCoroutine(ButtonDownTime(HoldTime, (f, c) => hole.Repair(f, c), hole.HoleRepaird, hole));

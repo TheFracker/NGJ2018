@@ -12,6 +12,7 @@ public class PlayerDoorOpen : MonoBehaviour
     public float HoldTime = 2f;
     public string Player;
     private string _tag = "door";
+    private PlayerGrabber _grabber;
 
     public SpriteRenderer oButton;
     public Image progressBar;
@@ -21,11 +22,10 @@ public class PlayerDoorOpen : MonoBehaviour
     {
         Player = transform.name.Remove(0, transform.name.Length - 1);
         _onCollider = false;
+        _grabber = GetComponent<PlayerGrabber>();
 
         oButton.enabled = false;
         progressBar.enabled = false;
-
-        
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "door")
+        if (other.gameObject.tag == _tag)
         {
             _onCollider = true;
         }
@@ -46,11 +46,11 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "door")
+        if (other.gameObject.tag == _tag)
         {
             var door = other.gameObject.transform.GetComponent<DoorCollider>();
-            if (door == null) return;
-            //oButton.enabled = door.Broken;
+            if (door == null && !_grabber.Grabbed) return;
+            oButton.enabled = door.Broken;
             if (Input.GetButtonDown($"Player{Player}Inter1"))
             {
                 var s = other.gameObject.transform.GetComponentInParent<Door>();
@@ -63,7 +63,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "door")
+        if (other.gameObject.tag == _tag)
         {
             _onCollider = false;
             oButton.enabled = false;
