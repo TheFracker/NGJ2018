@@ -1,22 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gaugePin : MonoBehaviour
 {
     private float rotation;
     private float prevRot;
     private float maxRotation = -240;
-
+    bool end = false;
+    public GameObject gameOver;
 
     // Use this for initialization
     void Start()
     {
+        gameOver.SetActive(false);
+        end = false; 
         prevRot = 0;
         rotation = 0;
-        Locator.GetGauge().Add();
-        Locator.GetGauge().Add();
-        Locator.GetGauge().Add();
+        
     }
 
     // Update is called once per frame
@@ -30,5 +32,13 @@ public class gaugePin : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.M))
             Locator.GetGauge().Add();
+
+        if (!end && Locator.GetGauge().FailureCounter == Locator.GetGauge().MaxFailures) {
+            end = true;
+            gameOver.SetActive(true);
+            SceneManager.LoadScene("GameOver");
+            
+        }
     }
+    
 }
