@@ -15,7 +15,9 @@ public class PlayerGrabber : MonoBehaviour
     public LayerMask Mask = 8;
     public int PlayerNumber { get; private set; }
     public AudioClip starFishPickUp;
+
     private List<AudioSource> _clips = new List<AudioSource>(2);
+    public SpriteRenderer xButton;
 
 
     void Start()
@@ -26,28 +28,44 @@ public class PlayerGrabber : MonoBehaviour
             _clips.Add(gameObject.AddComponent<AudioSource>());
         }
 
+
         _clips[0].clip = starFishPickUp;
+
+
+        print(xButton == null);
+        if (xButton != null)
+            xButton.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (!Grabbed)
         {
-            print("W");
+            _hit = Physics2D.Raycast(new Vector2(transform.position.x + Distance, transform.position.y),
+                transform.position, Distance, Mask.value);
+            if (_hit == false)
+            {
+                _hit = Physics2D.Raycast(new Vector2(transform.position.x - Distance, transform.position.y),
+                    transform.position, Distance, Mask.value);
+            }
         }
-       if (Input.GetButtonDown($"Player{PlayerNumber}Inter1"))
+
+        if (_hit.collider != null && !Grabbed)
+        {
+            if (xButton != null)
+                xButton.enabled = true;
+        }
+        else
+        {
+            if (xButton != null)
+                xButton.enabled = false;
+        }
+
+        if (Input.GetButtonDown($"Player{PlayerNumber}Inter1"))
         {
             if (!Grabbed)
             {
-                _hit = Physics2D.Raycast(new Vector2(transform.position.x + Distance, transform.position.y), transform.position, Distance, Mask.value);
-                if (_hit == false)
-                {
-                    _hit = Physics2D.Raycast(new Vector2(transform.position.x - Distance, transform.position.y), transform.position, Distance, Mask.value);
-                }
-
-
-
                 if (_hit.collider != null)
                 {
                     Grabbed = true;
@@ -90,9 +108,8 @@ public class PlayerGrabber : MonoBehaviour
         if (other.gameObject == Consol)
         {
             PlayerOnConsol = true;
+            if (xButton != null) xButton.enabled = Grabbed;
         }
-       
-
     }
 
     private void OnTriggerExit2D(Collider2D other)
