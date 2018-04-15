@@ -7,21 +7,21 @@ public abstract class Repairable : MonoBehaviour, IRepairProgress
 {
     public float Progress { get; private set; }
 
-    public string Repair(float timeToRepair)
+    public string Repair(float timeToRepair, bool repair = true)
     {
         var tag = Guid.NewGuid().ToString();
-        Timing.RunCoroutine(RepairRoutine(timeToRepair), tag);
+        Timing.RunCoroutine(RepairRoutine(timeToRepair, repair), tag);
         return tag;
     }
 
-    public string Repair(float timeToRepair, Action callback)
+    public string Repair(float timeToRepair, Action callback, bool repair = true)
     {
         var tag = Guid.NewGuid().ToString();
-        Timing.RunCoroutine(RepairRoutine(timeToRepair, callback), tag);
+        Timing.RunCoroutine(RepairRoutine(timeToRepair, callback, repair), tag);
         return tag;
     }
 
-    private IEnumerator<float> RepairRoutine(float timeToRepair)
+    private IEnumerator<float> RepairRoutine(float timeToRepair, bool repair)
     {
         var startTime = Time.time;
 
@@ -31,10 +31,11 @@ public abstract class Repairable : MonoBehaviour, IRepairProgress
             print(Progress);
             yield return Timing.WaitForOneFrame;
         }
-        Locator.GetGauge().Subtract();
+        if (repair)
+            Locator.GetGauge().Subtract();
     }
 
-    private IEnumerator<float> RepairRoutine(float timeToRepair, Action callback)
+    private IEnumerator<float> RepairRoutine(float timeToRepair, Action callback, bool repair)
     {
 
         var startTime = Time.time;
@@ -45,7 +46,8 @@ public abstract class Repairable : MonoBehaviour, IRepairProgress
             print(Progress);
             yield return Timing.WaitForOneFrame;
         }
-        Locator.GetGauge().Subtract();
+        if (repair)
+            Locator.GetGauge().Subtract();
         callback();
     }
 }

@@ -31,7 +31,7 @@ public class PlayerDoorSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonUp($"Player{Player}Inter1"))
+        if (Input.GetButtonUp($"Player{Player}Inter2"))
         {
             _buttonDown = false;
         }

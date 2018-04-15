@@ -34,7 +34,7 @@ public class PlayerDoorOpen : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonUp($"Player{Player}Inter1"))
+        if (Input.GetButtonUp($"Player{Player}Inter2"))
         {
             _buttonDown = false;
         }
@@ -60,7 +60,7 @@ public class PlayerDoorOpen : MonoBehaviour
                 var s = other.gameObject.transform.GetComponentInParent<Door>();
                 if (s == null) return;
                 _buttonDown = true;
-                StartCoroutine(ButtonDownTime(HoldTime, (f, c) => s.Repair(f, c), s.DoorOpen, s));
+                StartCoroutine(ButtonDownTime(HoldTime, (f, c, b) => s.Repair(f, c, b), s.DoorOpen, s));
             }
         }
     }
@@ -75,9 +75,9 @@ public class PlayerDoorOpen : MonoBehaviour
         }
     }
 
-    IEnumerator ButtonDownTime(float holdTime, Func<float, Action, string> callback, Action call, IRepairProgress prog)
+    IEnumerator ButtonDownTime(float holdTime, Func<float, Action, bool, string> callback, Action call, IRepairProgress prog)
     {
-        var routineTag = callback(holdTime, call);
+        var routineTag = callback(holdTime, call, false);
         print(routineTag);
         var startTime = Time.time;
         progressBar.fillAmount = 0;
