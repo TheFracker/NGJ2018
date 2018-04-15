@@ -7,10 +7,13 @@ public class DoorSwitch : Repairable, IBreakable
     public List<DoorCollider> Doors = new List<DoorCollider>();
     public bool DoorsBroken;
 
+    Animator anim;
+
     // Use this for initialization
     void Start()
     {
         DoorsBroken = false;
+        anim = this.gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -25,6 +28,7 @@ public class DoorSwitch : Repairable, IBreakable
             door.Broken = true;
         }
         DoorsBroken = true;
+        
     }
 
     public void DoorRepair()
@@ -34,5 +38,6 @@ public class DoorSwitch : Repairable, IBreakable
             door.Broken = false;
         }
         DoorsBroken = false;
+        anim.StopPlayback();
     }
 }
